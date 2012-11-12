@@ -12,7 +12,7 @@
 <body>
 <%@ include file="cabecera.jsp" %>
 <%
-int i = 60;
+int i = 50;
 int j = 9;
 %>
 <h1>Login</h1>
