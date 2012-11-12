@@ -10,6 +10,7 @@
 <script></script>
 </head>
 <body>
+<marquee><blink>qwerty</blink></marquee>
 <%@ include file="cabecera.jsp" %>
 <%
 int i = 50;
