@@ -32,16 +32,16 @@ public class Usuario {
 	 */
 	public boolean esLoginCorrecto (String username, String password) {
 		boolean resultado  = false;
-		Connection conn;
+		//Connection conn;
 		
 		try {
 			// Para conectarse a la BBDD
-			//Class.forName("com.mysql.jdbc.Driver");
-			//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users","root","root");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users","root","root");
 			
 			// Ahora lo hacemos con nuestra clase
 			// que consigue la Connection por JNDI todo pro
-			conn = DSConnection.getConnection("jdbc/miconexion"); 
+			//conn = DSConnection.getConnection("jdbc/miconexion"); 
 					
 			// Creamos la sentencia para ejecutar ordenes
 			Statement stat = conn.createStatement();
