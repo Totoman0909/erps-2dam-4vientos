@@ -42,7 +42,7 @@ public class DSConnection {
 			return conn;
 			
 			} catch (Exception e) {
-				System.out.println("ExcepciÃ³n: " + e.getMessage() + "Vomitada:\n");
+				System.out.println("Excepción: " + e.getMessage() + "Vomitada:\n");
 				e.printStackTrace();
 			}
 		

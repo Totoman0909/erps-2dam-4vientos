@@ -41,7 +41,7 @@ public class Usuario {
 			
 			// Ahora lo hacemos con nuestra clase
 			// que consigue la Connection por JNDI todo pro
-			conn = DSConnection.getConnection("miconexion"); 
+			conn = DSConnection.getConnection("jdbc/miconexion"); 
 					
 			// Creamos la sentencia para ejecutar ordenes
 			Statement stat = conn.createStatement();
