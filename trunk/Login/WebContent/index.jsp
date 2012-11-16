@@ -7,14 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <<<<<<< .mine
 <title>Título aséptico - </title>
-=======
-<title>Título cambiado - pello</title>
->>>>>>> .r11
+
 <script src="js/jquery.js"></script>
 <script></script>
 </head>
 <body>
-<marquee><blink>qwerty</blink></marquee>
+
 <%@ include file="cabecera.jsp" %>
 <%
 int i = 50;
