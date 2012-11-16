@@ -5,7 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<<<<<<< .mine
+<title>Título aséptico - </title>
+=======
 <title>Título cambiado - pello</title>
+>>>>>>> .r11
 <script src="js/jquery.js"></script>
 <script></script>
 </head>
