@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Pello Altadill
  *
  */
-public class HolaMundo extends ActionSupport {
+public class Prueba extends ActionSupport {
 	
     private String saludo;
     

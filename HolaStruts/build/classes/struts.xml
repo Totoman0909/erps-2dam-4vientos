@@ -39,10 +39,5 @@
    			<result name="success">/holamundo_ok.jsp</result>
 		</action>
 
-		<!-- Definición de una acción http://localhost/app/hola -->
-		<action name="prueba" class="info.pello.struts.hola.Prueba">
-	   		<result name="error">/form.jsp</result>
-   			<result name="success">/form.jsp</result>
-		</action>
-		</package>
+   </package>
 </struts>
