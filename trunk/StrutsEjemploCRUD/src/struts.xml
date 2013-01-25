@@ -28,5 +28,18 @@
 		<action name="eliminarTarea" method="eliminar" class="com.vaannila.web.TareaAction">
 			<result name="success" type="redirect">listarTarea</result>
 		</action>
+		
+		<action name="guardarOActualizarTipoTarea" method="guardarOActualizar" class="com.vaannila.web.TipoTareaAction">
+			<result name="success" type="redirect">listarTipoTarea</result>
+		</action>
+		<action name="listarTipoTarea" method="listar" class="com.vaannila.web.TipoTareaAction">
+			<result name="success">/tipotarea.jsp</result>
+		</action>
+		<action name="editarTipoTarea" method="editar" class="com.vaannila.web.TipoTareaAction">
+			<result name="success">/tipotarea.jsp</result>
+		</action>
+		<action name="eliminarTipoTarea" method="eliminar" class="com.vaannila.web.TipoTareaAction">
+			<result name="success" type="redirect">listarTipoTarea</result>
+		</action>
 	</package>
 </struts>

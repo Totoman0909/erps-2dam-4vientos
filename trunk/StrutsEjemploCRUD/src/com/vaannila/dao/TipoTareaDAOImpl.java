@@ -7,10 +7,10 @@ import org.hibernate.Transaction;
 
 import com.googlecode.s2hibernate.struts2.plugin.annotations.SessionTarget;
 import com.googlecode.s2hibernate.struts2.plugin.annotations.TransactionTarget;
-import com.vaannila.domain.Tarea;
-import com.vaannila.domain.User;
+import com.vaannila.domain.TipoTarea;
 
-public class TareaDAOImpl implements TareaDAO {
+
+public class TipoTareaDAOImpl implements TipoTareaDAO {
 	
 	@SessionTarget
 	Session session;
@@ -18,18 +18,19 @@ public class TareaDAOImpl implements TareaDAO {
 	@TransactionTarget
 	Transaction transaction;
 	
-/*	public void guardarOActualizarTarea(Tarea tarea);
-	public List<Tarea> listarTareas();
-	public Tarea listarTareaPorId(Long id);
-	public void eliminarTarea(Long id);
+/*
+ 	public void guardarOActualizarTipoTarea(TipoTarea tipoTarea);
+	public List<TipoTarea> listarTipoTareas();
+	public TipoTarea listarTareaPorId(Long id);
+	public void eliminarTipoTarea(Long id);
 */
 	/**
 	 * Used to save or update a user.
 	 */
 	@Override
-	public void guardarOActualizarTarea(Tarea tarea) {
+	public void guardarOActualizarTipoTarea(TipoTarea tipoTarea) {
 		try {
-			session.saveOrUpdate(tarea);
+			session.saveOrUpdate(tipoTarea);
 		} catch (Exception e) {
 			transaction.rollback();
 			e.printStackTrace();
@@ -40,10 +41,10 @@ public class TareaDAOImpl implements TareaDAO {
 	 * Used to delete a user.
 	 */
 	@Override
-	public void eliminarTarea(Long id) {
+	public void eliminarTipoTarea(Long id) {
 		try {
-			Tarea tarea = (Tarea) session.get(Tarea.class, id);
-			session.delete(tarea);
+			TipoTarea tipoTarea = (TipoTarea) session.get(TipoTarea.class, id);
+			session.delete(tipoTarea);
 		} catch (Exception e) {
 			transaction.rollback();
 			e.printStackTrace();
@@ -55,28 +56,28 @@ public class TareaDAOImpl implements TareaDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tarea> listarTareas(){
-		List<Tarea> tareas = null;
+	public List<TipoTarea> listarTipoTareas() {
+		List<TipoTarea> tipoTareas = null;
 		try {
-			tareas = session.createQuery("from Tarea").list();
+			tipoTareas = session.createQuery("from TipoTarea").list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return tareas;
+		return tipoTareas;
 	}
 
 	/**
 	 * Used to list a single user by Id.
 	 */
 	@Override
-	public Tarea listarTareaPorId(Long id) {
-		Tarea tarea = null;
+	public TipoTarea listarTipoTareaPorId(Long id){
+		TipoTarea tipoTarea = null;
 		try {
-			tarea = (Tarea) session.get(Tarea.class, id);
+			tipoTarea = (TipoTarea) session.get(TipoTarea.class, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return tarea;
+		return tipoTarea;
 	}
 
 }

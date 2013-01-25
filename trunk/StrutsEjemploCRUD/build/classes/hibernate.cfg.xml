@@ -13,7 +13,7 @@
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prueba</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prueba_crud</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.pool_size">1</property>
@@ -21,5 +21,7 @@
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
 		<mapping class="com.vaannila.domain.User" />
-	</session-factory>
+		<mapping class="com.vaannila.domain.Tarea" />
+		<mapping class="com.vaannila.domain.TipoTarea" />
+					</session-factory>
 </hibernate-configuration>

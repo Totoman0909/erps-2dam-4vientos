@@ -12,36 +12,28 @@
 </style>
 </head>
 <body>
-<s:form action="guardarOActualizarTarea">
+<s:form action="guardarOActualizarTipoTarea">
 	<s:push value="tarea">
 		<s:hidden name="id" />
-		<s:textfield name="nombre" label="Nombre" />
-		<s:textarea name="descripcion" label="Descripcion" />
-		<s:textfield name="tipoTarea" label="TipoTarea" />
-		<s:checkbox name="hecha"
-			label="Tarea hecha?" />
+		<s:textfield name="tipo" label="Tipo" />
 		<s:submit />
 	</s:push>
 </s:form>
 
-<s:if test="listaTareas.size() > 0">
+<s:if test="listaTipoTareas.size() > 0">
 	<div class="content">
 	<table class="userTable" cellpadding="5px">
 		<tr class="even">
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Hecha</th>
-			<th>TipoTarea</th>
+			<th>Id</th>
+			<th>Tipo</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
-		<s:iterator value="listaTareas" status="listaStatus">
+		<s:iterator value="listaTipoTareas" status="listaStatus">
 			<tr
 				class="<s:if test="#listaStatus.odd == true ">odd</s:if><s:else>even</s:else>">
-				<td><s:property value="nombre" /></td>
-				<td><s:property value="descripcion" /></td>
-				<td><s:property value="hecha" /></td>
-				<td><s:property value="tipoTarea" /></td>
+				<td><s:property value="id" /></td>
+				<td><s:property value="tipo" /></td>
 				<td><s:url id="editURL" action="editarTarea">
 					<s:param name="id" value="%{id}"></s:param>
 				</s:url> <s:a href="%{editURL}">Edit</s:a></td>
