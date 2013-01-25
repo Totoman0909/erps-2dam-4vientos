@@ -14,6 +14,7 @@ public class Tarea {
 	private String nombre;
 	private String descripcion;
 	private Boolean hecha;
+	private Integer tipoTarea;
 	
 	@Id
 	@GeneratedValue
@@ -29,7 +30,7 @@ public class Tarea {
 	public String getNombre() {
 		return nombre;
 	}
-	public void setName(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
@@ -47,6 +48,14 @@ public class Tarea {
 	}
 	public void setHecha(Boolean hecha) {
 		this.hecha = hecha;
+	}
+	
+	@Column(name="tipo_tarea")
+	public Integer getTipoTarea() {
+		return tipoTarea;
+	}
+	public void setTipoTarea(Integer tipoTarea) {
+		this.tipoTarea = tipoTarea;
 	}
 
 }
