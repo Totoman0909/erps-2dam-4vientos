@@ -16,5 +16,6 @@
 		<mapping class="com.vaannila.domain.User" />
 		<mapping class="com.vaannila.domain.Tarea" />
 		<mapping class="com.vaannila.domain.Tipo" />
+		<mapping resource="Jugador.hbm.xml" />
 					</session-factory>
 </hibernate-configuration>
