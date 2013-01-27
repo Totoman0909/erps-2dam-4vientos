@@ -41,5 +41,18 @@
 		<action name="eliminarTipo" method="eliminar" class="com.vaannila.web.TipoAction">
 			<result name="success" type="redirect">listarTipo</result>
 		</action>
+		
+		<action name="guardarOActualizarJugador" method="guardarOActualizar" class="JugadorAction">
+			<result name="success" type="redirect">listarJugador</result>
+		</action>
+		<action name="listarJugador" method="listar" class="JugadorAction">
+			<result name="success">/jugador.jsp</result>
+		</action>
+		<action name="editarJugador" method="editar" class="JugadorAction">
+			<result name="success">/jugador.jsp</result>
+		</action>
+		<action name="eliminarJugador" method="eliminar" class="JugadorAction">
+			<result name="success" type="redirect">listarJugador</result>
+		</action>
 	</package>
 </struts>

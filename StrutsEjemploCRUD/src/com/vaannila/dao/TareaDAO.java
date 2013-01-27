@@ -3,7 +3,7 @@ package com.vaannila.dao;
 import java.util.List;
 
 import com.vaannila.domain.Tarea;
-import com.vaannila.domain.User;
+
 
 public interface TareaDAO {
 
