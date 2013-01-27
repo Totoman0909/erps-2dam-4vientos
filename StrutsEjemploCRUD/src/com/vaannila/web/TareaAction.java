@@ -10,11 +10,12 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.vaannila.dao.UserDAO;
-import com.vaannila.dao.UserDAOImpl;
 import com.vaannila.dao.TareaDAO;
 import com.vaannila.dao.TareaDAOImpl;
+import com.vaannila.dao.TipoDAO;
+import com.vaannila.dao.TipoDAOImpl;
 import com.vaannila.domain.Tarea;
+import com.vaannila.domain.Tipo;
 
 public class TareaAction extends ActionSupport implements ModelDriven<Tarea> {
 
@@ -29,6 +30,7 @@ public class TareaAction extends ActionSupport implements ModelDriven<Tarea> {
 	private Tarea tarea = new Tarea();
 	private List<Tarea> listaTareas = new ArrayList<Tarea>();
 	private TareaDAO tareaDAO = new TareaDAOImpl();
+
 	
 	@Override
 	public Tarea getModel() {
@@ -92,5 +94,7 @@ public class TareaAction extends ActionSupport implements ModelDriven<Tarea> {
 	public void setListaTareas(List<Tarea> listaTareas) {
 		this.listaTareas = listaTareas;
 	}
+	
+
 
 }

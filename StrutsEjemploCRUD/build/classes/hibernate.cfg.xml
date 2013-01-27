@@ -4,16 +4,9 @@
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<!--  property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost</property>
-		<property name="hibernate.connection.username">sa</property>
-		<property name="connection.password"></property>
-		<property name="connection.pool_size">1</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
-		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property -->
+		
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prueba_crud</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prueba</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.pool_size">1</property>
@@ -22,6 +15,6 @@
 		<property name="hbm2ddl.auto">create</property>
 		<mapping class="com.vaannila.domain.User" />
 		<mapping class="com.vaannila.domain.Tarea" />
-		<mapping class="com.vaannila.domain.TipoTarea" />
+		<mapping class="com.vaannila.domain.Tipo" />
 					</session-factory>
 </hibernate-configuration>

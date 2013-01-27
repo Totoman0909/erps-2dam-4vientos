@@ -12,12 +12,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.vaannila.dao.UserDAO;
 import com.vaannila.dao.UserDAOImpl;
-import com.vaannila.dao.TipoTareaDAO;
-import com.vaannila.dao.TipoTareaDAOImpl;
+import com.vaannila.dao.TipoDAO;
+import com.vaannila.dao.TipoDAOImpl;
 import com.vaannila.domain.Tarea;
-import com.vaannila.domain.TipoTarea;
+import com.vaannila.domain.Tipo;
 
-public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTarea> {
+public class TipoAction extends ActionSupport implements ModelDriven<Tipo> {
 
 	private static final long serialVersionUID = -6659924552566640539L;
 
@@ -28,13 +28,13 @@ public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTa
 	public void eliminarTipoTarea(Long id);
 */
 	
-	private TipoTarea tipoTarea = new TipoTarea();
-	private List<TipoTarea> listaTipoTareas = new ArrayList<TipoTarea>();
-	private TipoTareaDAO tipoTareaDAO = new TipoTareaDAOImpl();
+	private Tipo tipo = new Tipo();
+	private List<Tipo> listaTipos = new ArrayList<Tipo>();
+	private TipoDAO tipoDAO = new TipoDAOImpl();
 	
 	@Override
-	public TipoTarea getModel() {
-		return tipoTarea;
+	public Tipo getModel() {
+		return tipo;
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTa
 	 */
 	public String guardarOActualizar()
 	{	
-		tipoTareaDAO.guardarOActualizarTipoTarea(tipoTarea);
+		tipoDAO.guardarOActualizarTipo(tipo);
 		return SUCCESS;
 	}
 	
@@ -53,7 +53,7 @@ public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTa
 	 */
 	public String listar()
 	{
-		listaTipoTareas = tipoTareaDAO.listarTipoTareas();
+		listaTipos = tipoDAO.listarTipo();
 		return SUCCESS;
 	}
 	
@@ -64,7 +64,7 @@ public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTa
 	public String eliminar()
 	{
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-		tipoTareaDAO.eliminarTipoTarea(Long.parseLong(request.getParameter("id")));
+		tipoDAO.eliminarTipo(Long.parseLong(request.getParameter("id")));
 		return SUCCESS;
 	}
 	
@@ -75,24 +75,24 @@ public class TipoTareaAction extends ActionSupport implements ModelDriven<TipoTa
 	public String editar()
 	{
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-		tipoTarea = tipoTareaDAO.listarTipoTareaPorId(Long.parseLong(request.getParameter("id")));
+		tipo = tipoDAO.listarTipoPorId(Long.parseLong(request.getParameter("id")));
 		return SUCCESS;
 	}
 	
-	public TipoTarea getTipoTarea() {
-		return tipoTarea;
+	public Tipo getTipo() {
+		return tipo;
 	}
 
-	public void setTipoTarea(TipoTarea tipoTarea) {
-		this.tipoTarea = tipoTarea;
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
-	public List<TipoTarea> getListaTipoTareas() {
-		return listaTipoTareas;
+	public List<Tipo> getListaTipos() {
+		return listaTipos;
 	}
 
-	public void setListaTipoTareas(List<TipoTarea> listaTipoTareas) {
-		this.listaTipoTareas = listaTipoTareas;
+	public void setListaTipos(List<Tipo> listaTipos) {
+		this.listaTipos = listaTipos;
 	}
 
 }

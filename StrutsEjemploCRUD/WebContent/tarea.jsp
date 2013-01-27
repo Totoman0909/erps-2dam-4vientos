@@ -18,6 +18,7 @@
 		<s:textfield name="nombre" label="Nombre" />
 		<s:textarea name="descripcion" label="Descripcion" />
 		<s:textfield name="tipoTarea" label="TipoTarea" />
+
 		<s:checkbox name="hecha"
 			label="Tarea hecha?" />
 		<s:submit />
