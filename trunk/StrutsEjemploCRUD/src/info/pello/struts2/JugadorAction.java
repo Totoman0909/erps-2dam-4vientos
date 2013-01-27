@@ -21,7 +21,8 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 	private Jugador jugador = new Jugador();
 	private List<Jugador> listaJugadores = new ArrayList<Jugador>();
 	private JugadorDAO jugadorDAO = new JugadorDAO();
-
+	//private List<Equipo> equipos;
+	private EquipoDAO equipoDAO = new EquipoDAO();
 	
 	@Override
 	public Jugador getModel() {
@@ -86,6 +87,24 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 		this.listaJugadores = listaJugadores;
 	}
 	
+	public List<Equipo> getEquipos() {
+
+		return equipoDAO.listarEquipos();
+	}
+
+	/**
+	 * @return the equipoDAO
+	 */
+	public EquipoDAO getEquipoDAO() {
+		return equipoDAO;
+	}
+
+	/**
+	 * @param equipoDAO the equipoDAO to set
+	 */
+	public void setEquipoDAO(EquipoDAO equipoDAO) {
+		this.equipoDAO = equipoDAO;
+	}
 
 
 }

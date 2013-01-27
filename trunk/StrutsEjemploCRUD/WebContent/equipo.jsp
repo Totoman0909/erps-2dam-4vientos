@@ -12,6 +12,7 @@
 </style>
 </head>
 <body>
+<h1>Equipos</h1>
 <s:form action="guardarOActualizarEquipo">
 	<s:push value="equipo">
 		<s:hidden name="id" />

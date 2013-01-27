@@ -6,5 +6,12 @@
 	 	<generator class="increment"/>
 	 </id>
 	 <property name="nombre" column="nombre" />
+	  <set name="jugadores" table="jugador"
+                inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idequipo" not-null="true" />
+            </key>
+            <one-to-many class="info.pello.struts2.Jugador" />
+        </set>
  </class>
 </hibernate-mapping>
