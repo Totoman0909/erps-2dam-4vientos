@@ -1,4 +1,4 @@
-
+package info.pello.struts2;
 
 
 public class Jugador {
