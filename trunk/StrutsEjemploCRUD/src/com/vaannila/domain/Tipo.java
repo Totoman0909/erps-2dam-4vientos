@@ -1,18 +1,28 @@
 package com.vaannila.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.ManyToMany;
+
 
 @Entity
-@Table(name="tipotarea")
-public class TipoTarea {
+@Table(name="tipo")
+public class Tipo {
 
 	private Long id;
-	private String tipo;
+	private String nombre;
+	
 
+	public Tipo () {
+
+	}
+	
 	
 	@Id
 	@GeneratedValue
@@ -24,13 +34,14 @@ public class TipoTarea {
 		this.id = id;
 	}
 	
-	@Column(name="tipo")
-	public String getTipo() {
-		return tipo;
+	@Column(name="nombre")
+	public String getNombre() {
+		return nombre;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+	
 	
 
 }

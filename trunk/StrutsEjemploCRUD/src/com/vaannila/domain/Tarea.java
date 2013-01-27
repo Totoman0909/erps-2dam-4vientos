@@ -1,20 +1,34 @@
 package com.vaannila.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name="tarea")
 public class Tarea {
 
+	@Id
 	private Long id;
 	private String nombre;
 	private String descripcion;
 	private Boolean hecha;
 	private Integer tipoTarea;
+
+	
+	
+	public Tarea () {
+
+	}
 	
 	@Id
 	@GeneratedValue
@@ -57,5 +71,6 @@ public class Tarea {
 	public void setTipoTarea(Integer tipoTarea) {
 		this.tipoTarea = tipoTarea;
 	}
+
 
 }
