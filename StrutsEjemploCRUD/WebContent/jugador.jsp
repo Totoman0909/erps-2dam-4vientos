@@ -18,9 +18,20 @@
 		<s:textfield name="nombre" label="Nombre" />
 		<s:textfield name="puesto" label="Puesto" />
 		<s:textfield name="dorsal" label="Dorsal" />
-		<s:textfield name="idequipo" label="Id Equipo" />
+		<!--   s:textfield name="idequipo" label="Id Equipo" /-->
+		<s:textfield name="equipo.nombre" label="Nombre Equipo" />
+<s:select label="Equipos"
+       name="idequipo"
+       list="equipos"
+       listKey="id"
+       listValue="nombre"
+       multiple="false"
+       required="true"
+       value="idequipo"
+/>
 		<s:submit />
 	</s:push>
+
 </s:form>
 
 <s:if test="listaJugadores.size() > 0">
@@ -31,6 +42,7 @@
 			<th>Puesto</th>
 			<th>Dorsal</th>
 			<th>Id Equipo</th>
+			<th>Nombre Equipo</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -40,7 +52,8 @@
 				<td><s:property value="nombre" /></td>
 				<td><s:property value="puesto" /></td>
 				<td><s:property value="dorsal" /></td>
-				<td><s:property value="idequipo" /></td>
+				<td><s:property value="equipo.id" /></td>
+				<td><s:property value="equipo.nombre" /></td>
 				<td><s:url id="editURL" action="editarJugador">
 					<s:param name="id" value="%{id}"></s:param>
 				</s:url> <s:a href="%{editURL}">Editar</s:a></td>

@@ -9,5 +9,8 @@
 	 <property name="puesto" column="puesto" />
 	 <property name="dorsal" column="dorsal" />
 	 <property name="idequipo" column="idequipo" />
+	 <many-to-one name="equipo" class="info.pello.struts2.Equipo" insert="false" update="false"  fetch="select">
+            <column name="idequipo" not-null="true" />
+     </many-to-one>
  </class>
 </hibernate-mapping>

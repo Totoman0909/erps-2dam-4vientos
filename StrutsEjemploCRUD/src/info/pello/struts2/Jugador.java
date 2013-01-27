@@ -8,6 +8,7 @@ public class Jugador {
 	private String puesto;
 	private Long dorsal;
 	private Long idequipo;
+	private Equipo equipo;
 	
 		
 	public Long getId() {
@@ -70,6 +71,18 @@ public class Jugador {
 	 */
 	public void setIdequipo(Long idequipo) {
 		this.idequipo = idequipo;
+	}
+	/**
+	 * @return the equipo
+	 */
+	public Equipo getEquipo() {
+		return equipo;
+	}
+	/**
+	 * @param equipo the equipo to set
+	 */
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 
 

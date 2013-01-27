@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 3.3.2deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 24-01-2013 a las 15:32:53
--- Versión del servidor: 5.5.24
--- Versión de PHP: 5.3.10-1ubuntu3.4
+-- Host: localhost
+-- Generation Time: Jan 27, 2013 at 06:43 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.2-1ubuntu4.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,74 +16,65 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `prueba_crud`
+-- Database: `prueba`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PHONE`
+-- Table structure for table `equipo`
 --
 
-CREATE TABLE IF NOT EXISTS `PHONE` (
-  `PHONE_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `PHONE_TYPE` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `PHONE_NUMBER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`PHONE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+CREATE TABLE IF NOT EXISTS `equipo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `PHONE`
+-- Dumping data for table `equipo`
 --
 
-INSERT INTO `PHONE` (`PHONE_ID`, `PHONE_TYPE`, `PHONE_NUMBER`) VALUES
-(1, 'house', '32354353'),
-(2, 'mobile', '9889343423');
+INSERT INTO `equipo` (`id`, `nombre`) VALUES
+(1, 'Juventus'),
+(2, 'Urroztarra FC'),
+(3, 'test'),
+(4, 'osasuna'),
+(5, 'Otro');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `STUDENT`
+-- Table structure for table `jugador`
 --
 
-CREATE TABLE IF NOT EXISTS `STUDENT` (
-  `STUDENT_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `STUDENT_NAME` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`STUDENT_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+CREATE TABLE IF NOT EXISTS `jugador` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `puesto` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `dorsal` int(11) NOT NULL,
+  `idequipo` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKB4D49BC29ADEDE6C` (`idequipo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- Volcado de datos para la tabla `STUDENT`
+-- Dumping data for table `jugador`
 --
 
-INSERT INTO `STUDENT` (`STUDENT_ID`, `STUDENT_NAME`) VALUES
-(1, 'Eswar');
+INSERT INTO `jugador` (`id`, `nombre`, `puesto`, `dorsal`, `idequipo`) VALUES
+(1, 'Drenthe', 'Madero', 6, 1),
+(2, 'Fauvert', 'Rey de copas', 34, 2),
+(3, 'Urban', 'Delantero', 7, 3),
+(4, 'Otro', 'bueno', 3, 2),
+(5, 'eee', 'fff', 11, 1),
+(6, 'www', 'eee', 12, 1),
+(7, 'Llorente', 'Delantero', 9, 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `STUDENT_PHONE`
---
-
-CREATE TABLE IF NOT EXISTS `STUDENT_PHONE` (
-  `STUDENT_ID` bigint(20) NOT NULL,
-  `PHONE_ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`STUDENT_ID`,`PHONE_ID`),
-  UNIQUE KEY `PHONE_ID` (`PHONE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `STUDENT_PHONE`
---
-
-INSERT INTO `STUDENT_PHONE` (`STUDENT_ID`, `PHONE_ID`) VALUES
-(1, 1),
-(1, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tarea`
+-- Table structure for table `tarea`
 --
 
 CREATE TABLE IF NOT EXISTS `tarea` (
@@ -97,30 +87,40 @@ CREATE TABLE IF NOT EXISTS `tarea` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `tarea`
+-- Dumping data for table `tarea`
 --
 
 INSERT INTO `tarea` (`id`, `nombre`, `descripcion`, `hecha`, `tipo_tarea`) VALUES
-(1, 'Muerte y Dolor', 'Destripar y matar lentamente', 0, 4),
-(2, 'Asesinar', 'Hacha de doble filo', 0, 0),
+(1, 'Muerte y Dolor', 'Destripar y matar lentamente', 0, 3),
+(2, 'Asesinar', 'Hacha de doble filo', 0, 2),
 (3, 'Tarea', 'Nueva tarea', 1, 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipotarea`
+-- Table structure for table `tipo`
 --
 
-CREATE TABLE IF NOT EXISTS `tipotarea` (
+CREATE TABLE IF NOT EXISTS `tipo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `tipo`
+--
+
+INSERT INTO `tipo` (`id`, `nombre`) VALUES
+(1, 'importante'),
+(2, 'sin más'),
+(3, 'Urgente'),
+(5, 'mierda');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `USER`
+-- Table structure for table `USER`
 --
 
 CREATE TABLE IF NOT EXISTS `USER` (
@@ -134,14 +134,10 @@ CREATE TABLE IF NOT EXISTS `USER` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `USER`
+-- Dumping data for table `USER`
 --
 
 INSERT INTO `USER` (`USER_ID`, `USER_NAME`, `USER_GENDER`, `USER_COUNTRY`, `USER_ABOUT_YOU`, `USER_MAILING_LIST`) VALUES
 (1, 'Muerte', 'Male', 'USA', 'Everlasting Pain', 1),
 (2, 'Asesinar', 'Matar', 'Destripar', 'Mutilar', 1),
 (3, 'sdfasdf', 'Male', 'USA', 'sdfasdf', 0);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

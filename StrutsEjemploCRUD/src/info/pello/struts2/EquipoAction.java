@@ -78,11 +78,11 @@ public class EquipoAction extends ActionSupport implements ModelDriven<Equipo> {
 		this.equipo = equipo;
 	}
 
-	public List<Equipo> getListaEquipoes() {
+	public List<Equipo> getListaEquipos() {
 		return listaEquipos;
 	}
 
-	public void setListaEquipoes(List<Equipo> listaEquipos) {
+	public void setListaEquipos(List<Equipo> listaEquipos) {
 		this.listaEquipos = listaEquipos;
 	}
 	
