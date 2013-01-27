@@ -1,3 +1,4 @@
+package info.pello.struts2;
 
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 	
 	private Jugador jugador = new Jugador();
 	private List<Jugador> listaJugadores = new ArrayList<Jugador>();
-	private JugadorDAO jugadorDAO = new JugadorDAOImpl();
+	private JugadorDAO jugadorDAO = new JugadorDAO();
 
 	
 	@Override
