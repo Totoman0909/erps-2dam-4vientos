@@ -1,143 +1,100 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1
+-- version 2.10.3
 -- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jan 27, 2013 at 06:43 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.2-1ubuntu4.9
+-- 
+-- Servidor: localhost
+-- Tiempo de generación: 28-01-2013 a las 13:38:11
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `prueba`
---
+-- 
+-- Base de datos: `pruebas`
+-- 
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `equipo`
---
+-- 
+-- Estructura de tabla para la tabla `equipo`
+-- 
 
-CREATE TABLE IF NOT EXISTS `equipo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+CREATE TABLE `equipo` (
+  `id` int(11) NOT NULL auto_increment,
+  `nombre` varchar(30) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `equipo`
---
+-- 
+-- Volcar la base de datos para la tabla `equipo`
+-- 
 
-INSERT INTO `equipo` (`id`, `nombre`) VALUES
-(1, 'Juventus'),
-(2, 'Urroztarra FC'),
-(3, 'test'),
-(4, 'osasuna'),
-(5, 'Otro');
+INSERT INTO `equipo` VALUES (1, 'Juve');
+INSERT INTO `equipo` VALUES (2, 'Urroztarra');
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `jugador`
---
+-- 
+-- Estructura de tabla para la tabla `jugador`
+-- 
 
-CREATE TABLE IF NOT EXISTS `jugador` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `puesto` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `jugador` (
+  `id` int(11) NOT NULL auto_increment,
+  `nombre` varchar(30) collate utf8_unicode_ci NOT NULL,
+  `puesto` varchar(20) collate utf8_unicode_ci NOT NULL,
   `dorsal` int(11) NOT NULL,
   `idequipo` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   KEY `FKB4D49BC29ADEDE6C` (`idequipo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `jugador`
---
+-- 
+-- Volcar la base de datos para la tabla `jugador`
+-- 
 
-INSERT INTO `jugador` (`id`, `nombre`, `puesto`, `dorsal`, `idequipo`) VALUES
-(1, 'Drenthe', 'Madero', 6, 1),
-(2, 'Fauvert', 'Rey de copas', 34, 2),
-(3, 'Urban', 'Delantero', 7, 3),
-(4, 'Otro', 'bueno', 3, 2),
-(5, 'eee', 'fff', 11, 1),
-(6, 'www', 'eee', 12, 1),
-(7, 'Llorente', 'Delantero', 9, 3);
+INSERT INTO `jugador` VALUES (1, 'Pardo', 'Delantero Eterno', 0, 1);
+INSERT INTO `jugador` VALUES (2, 'Abilio', 'Medio cerebro', 0, 1);
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `tarea`
---
+-- 
+-- Estructura de tabla para la tabla `tarea`
+-- 
 
-CREATE TABLE IF NOT EXISTS `tarea` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `tarea` (
+  `id` int(11) NOT NULL auto_increment,
+  `nombre` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(255) collate utf8_unicode_ci NOT NULL,
   `hecha` tinyint(1) NOT NULL,
-  `tipo_tarea` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `tarea`
---
+-- 
+-- Volcar la base de datos para la tabla `tarea`
+-- 
 
-INSERT INTO `tarea` (`id`, `nombre`, `descripcion`, `hecha`, `tipo_tarea`) VALUES
-(1, 'Muerte y Dolor', 'Destripar y matar lentamente', 0, 3),
-(2, 'Asesinar', 'Hacha de doble filo', 0, 2),
-(3, 'Tarea', 'Nueva tarea', 1, 3);
+INSERT INTO `tarea` VALUES (1, 'Muerte y Dolor', 'Destripar y matar lentamente', 0);
+INSERT INTO `tarea` VALUES (2, 'Asesinar', 'Hacha de doble filo', 0);
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `tipo`
---
+-- 
+-- Estructura de tabla para la tabla `user`
+-- 
 
-CREATE TABLE IF NOT EXISTS `tipo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `tipo`
---
-
-INSERT INTO `tipo` (`id`, `nombre`) VALUES
-(1, 'importante'),
-(2, 'sin más'),
-(3, 'Urgente'),
-(5, 'mierda');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `USER`
---
-
-CREATE TABLE IF NOT EXISTS `USER` (
-  `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `USER_NAME` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `USER_GENDER` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `USER_COUNTRY` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `USER_ABOUT_YOU` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `user` (
+  `USER_ID` int(11) NOT NULL auto_increment,
+  `USER_NAME` varchar(40) collate utf8_unicode_ci NOT NULL,
+  `USER_GENDER` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `USER_COUNTRY` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `USER_ABOUT_YOU` varchar(255) collate utf8_unicode_ci NOT NULL,
   `USER_MAILING_LIST` tinyint(1) NOT NULL,
-  PRIMARY KEY (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  PRIMARY KEY  (`USER_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `USER`
---
+-- 
+-- Volcar la base de datos para la tabla `user`
+-- 
 
-INSERT INTO `USER` (`USER_ID`, `USER_NAME`, `USER_GENDER`, `USER_COUNTRY`, `USER_ABOUT_YOU`, `USER_MAILING_LIST`) VALUES
-(1, 'Muerte', 'Male', 'USA', 'Everlasting Pain', 1),
-(2, 'Asesinar', 'Matar', 'Destripar', 'Mutilar', 1),
-(3, 'sdfasdf', 'Male', 'USA', 'sdfasdf', 0);
+INSERT INTO `user` VALUES (1, 'Muerte', 'Dolor', 'Infierno', 'Everlasting Pain', 0);
+INSERT INTO `user` VALUES (2, 'Asesinar', 'Matar', 'Destripar', 'Mutilar', 1);
