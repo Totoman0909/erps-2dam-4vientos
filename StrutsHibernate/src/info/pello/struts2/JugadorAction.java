@@ -23,6 +23,7 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 	private JugadorDAO jugadorDAO = new JugadorDAO();
 	//private List<Equipo> equipos;
 	private EquipoDAO equipoDAO = new EquipoDAO();
+	private String nombre;
 	
 	@Override
 	public Jugador getModel() {
@@ -46,6 +47,17 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 	public String listar()
 	{
 		listaJugadores = jugadorDAO.listarJugadores();
+		return SUCCESS;
+	}
+	
+	/**
+	 * busca jugadores
+	 * @return String
+	 */
+	public String buscar()
+	{
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+		listaJugadores = jugadorDAO.buscarJugadores(request.getParameter("nombre"));
 		return SUCCESS;
 	}
 	
@@ -104,6 +116,20 @@ public class JugadorAction extends ActionSupport implements ModelDriven<Jugador>
 	 */
 	public void setEquipoDAO(EquipoDAO equipoDAO) {
 		this.equipoDAO = equipoDAO;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 

@@ -3,6 +3,7 @@ package info.pello.struts2;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -51,6 +52,23 @@ public class JugadorDAO {
 		List<Jugador> jugadores = null;
 		try {
 			jugadores = session.createQuery("from Jugador").list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jugadores;
+	}
+	
+	/**
+	 * Used to list all the users.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Jugador> buscarJugadores(String nombre){
+		List<Jugador> jugadores = null;
+		System.err.println("Nombre: " + nombre);
+		Query whereClause = session.createQuery("from Jugador where nombre = '"+nombre+"'");
+		try {
+			//jugadores = session.createQuery("from Jugador").list();
+			jugadores = whereClause.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

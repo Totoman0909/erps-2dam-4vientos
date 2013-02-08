@@ -17,7 +17,10 @@
 		<action name="eliminarJugador" method="eliminar" class="info.pello.struts2.JugadorAction">
 			<result name="success" type="redirect">listarJugador</result>
 		</action>
-		
+		<action name="buscarJugador" method="buscar" class="info.pello.struts2.JugadorAction">
+			<result name="success">/jugador.jsp</result>
+		</action>
+				
 		<action name="guardarOActualizarEquipo" method="guardarOActualizar" class="info.pello.struts2.EquipoAction">
 			<result name="success" type="redirect">listarEquipo</result>
 		</action>
