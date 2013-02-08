@@ -12,6 +12,7 @@
 </style>
 </head>
 <body>
+<h4>Insertar/modificar</h4>
 <s:form action="guardarOActualizarJugador">
 	<s:push value="jugador">
 		<s:hidden name="id" />
@@ -30,6 +31,12 @@
 		<s:submit />
 	</s:push>
 
+</s:form>
+
+<h4>Búsquedas</h4>
+<s:form action="buscarJugador">
+	<s:textfield name="nombre" label="nombre" />
+	<s:submit />
 </s:form>
 
 <s:if test="listaJugadores.size() > 0">

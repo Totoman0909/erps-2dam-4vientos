@@ -12,12 +12,12 @@
 </style>
 </head>
 <body>
-<h1>Equipos</h1>
+<h1><s:text name="teams" /></h1>
 <s:form action="guardarOActualizarEquipo">
 	<s:push value="equipo">
 		<s:hidden name="id" />
-		<s:textfield name="nombre" label="Nombre" />
-		<s:submit />
+		<s:textfield key="nombre" />
+		<s:submit key="submit" />
 	</s:push>
 </s:form>
 
