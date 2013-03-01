@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" namespace="/" extends="hibernate-default">
+
+						
+		<action name="principal" method="listar" class="info.pello.struts2.PersonajeAction">
+			<result name="success">/personaje.jsp</result>
+		</action>
+		<action name="eliminarPersonaje" method="eliminar" class="info.pello.struts2.PersonajeAction">
+			<result name="success" type="redirect">principal</result>
+		</action>
+		
+		<action name="casas" method="casas" class="info.pello.struts2.PersonajeAction">
+			<result name="success">/casas.jsp</result>
+		</action>
+
+		<action name="listarPorCasa" method="listarPorCasa" class="info.pello.struts2.PersonajeAction">
+			<result name="success">/casas.jsp</result>
+		</action>
+		
+		<action name="nuevo" method="nuevo" class="info.pello.struts2.PersonajeAction">
+			<result name="success">/nuevo.jsp</result>
+		</action>
+		<action name="guardarOActualizarPersonaje" method="guardarOActualizar" class="info.pello.struts2.PersonajeAction">
+			<result name="success" type="redirect">principal</result>
+			<result name="error">nuevo.jsp</result>
+		</action>
+		
+		<action name="acercade" class="info.pello.struts2.AcercaDeAction">
+			<result name="success">acercade.jsp</result>
+		</action>
+	</package>
+</struts>
