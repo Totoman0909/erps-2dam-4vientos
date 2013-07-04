@@ -5,7 +5,7 @@ and open the template in the editor.
 -->
 <greet
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xsi:noNamespaceSchemaLocation='file:/root/NetBeansProjects/tooomb/xsdValidator/src/main/java/hello.xsd'>
+    xsi:noNamespaceSchemaLocation='hello.xsd'>
     Hello XSD
 </greet>
 
