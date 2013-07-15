@@ -68,7 +68,7 @@ public class CustomerDAO {
 	 * @return list of customers
 	 */
 	public List<Customer> getCustomers () {
-		// A lo pro:
+		// Being pro:
 		List<Customer> customers = new ArrayList<Customer>();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SELECT_ALL_SQL); 
 
@@ -81,7 +81,7 @@ public class CustomerDAO {
 			customers.add(customer);
 		}
 		
-		// ANOTHER WAY
+		// Bajeril Style
 		// Living la vida loca, RowMapper is a Raw type but
 		// everything may be ok.
 		/*List<Customer> customers = jdbcTemplate.query(SELECT_ALL_SQL,
