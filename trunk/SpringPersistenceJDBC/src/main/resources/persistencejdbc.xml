@@ -34,22 +34,5 @@ warning: SimpleJdbcTempalte is deprecated
 	autowire="byName">
 </bean>
 
-<!-- We create the journalist -->
-<bean id="logger" class="info.pello.spring.persistence.Logger" />
-<!-- 
-We add AOP 
-Don't forget to include in header:
-						http://www.springframework.org/schema/aop
-						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
--->
-
-<!--  aop:config>
-	<aop:aspect ref="logger">
-		<aop:pointcut id="running"
-			expression="execution(* *.run(..))" /> 
-		<aop:after pointcut-ref="running"
-			method="reportRunning"/>
-	</aop:aspect>
-</aop:config -->
 
 </beans>

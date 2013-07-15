@@ -6,16 +6,21 @@ import java.util.Scanner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * 
- */
 
 /**
- * @author luser
- *
+ * This program makes use of a CustomerDAO that
+ * uses Spring JdbcTemplates to manage data.
+ * 
+ * @author Pello Xabier Altadill Izura
+ * @greetz White take away cup
  */
 public class Main {
 	
+	/**
+	 * shows all data from Customer table
+	 * @param customerDao
+	 * @return
+	 */
 	public static String readAll (CustomerDAO customerDao) {
 		String result = "";
 		List<Customer> customers = customerDao.getCustomers();
