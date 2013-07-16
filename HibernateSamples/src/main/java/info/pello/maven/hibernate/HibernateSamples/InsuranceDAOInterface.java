@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface InsuranceDAOInterface {
 	
-	public Insurance selectById(long id);
+	public Insurance selectById(int id);
 	public List<Insurance> selectAll ();
 	public void insert (Insurance insurance);
 	public void update (Insurance insurance);
