@@ -37,6 +37,8 @@
   
   		<!-- Here comes the mapping definition - saved in resources dir with this hibernate config -->
         <mapping resource="Customer.hbm.xml"/>
+        <mapping resource="Car.hbm.xml"/>
+        <mapping resource="Insurance.hbm.xml"/>
          
 
     </session-factory>
