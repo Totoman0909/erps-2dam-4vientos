@@ -37,6 +37,8 @@
   
   		<!-- Here comes the mapping using annotations in a java class -->
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Customer" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Car" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Insurance" />
          
 
     </session-factory>
