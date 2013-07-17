@@ -36,8 +36,28 @@ public class Main  {
         System.out.println("Total Customers: " + customers.size());	
 	}
 	
+	/**
+	 * simple function for reusing
+	 * @param customerDAO
+	 */
+	public static void showAllCars (CarDAOInterface carDAO) {
+		// SELECT ALL DATA
+    	List<Car> cars = carDAO.selectAll();
+        
+    	System.out.println("\n--- CARS ----- table contents -----------");
+        
+        for(Car car : cars) {
+        	System.out.print("Id: " + car.getId());
+        	System.out.print(" - Model: " + car.getModel());
+        	System.out.println(" - Insurance: " + car.getInsurance().getCompany());
+        }
+
+        System.out.println("Total cars: " + cars.size());	
+	}
+	
     public static void main( String[] args )
     {
+    	/*
     	CustomerDAO customerDAO = new CustomerDAO();
     	showAll(customerDAO);
             
@@ -65,6 +85,37 @@ public class Main  {
 
         System.out.println("Show data after deletion");
     	showAll(customerDAO);
+        */
+    	
+    	CarDAOInterface carDAO = new CarDAO();
+    	
+    	showAllCars(carDAO);
+    	
+        // SELECT JUST ONE
+        Car oneCar = carDAO.selectById(1);
+    	System.out.println("Selected Name: " + oneCar.getRegistration());
+    	
+        // INSERT NEW DATA
+    	Insurance insurance = new Insurance("Lagun Aro","Full",666.66);
+    	Car newCar = new Car(0,"5646DFR","Volkswagen passat");
+    	newCar.setInsurance(insurance);
+    	insurance.setCar(newCar);
+    	
+    	carDAO.insert(newCar);
+    	
+    	System.out.println("Inserted id: " + newCar.getId());
+    	
+        System.out.println("Show data after new insert");
+    	showAllCars(carDAO);
         
+        // UPDATE DATA
+        newCar.setModel("Seat Panda TDI");
+        carDAO.update(newCar);
+
+        System.out.println("Show data after update");
+    	showAllCars(carDAO);
+        
+        // DELETE DATA
+        carDAO.delete(newCar);
     }
 }
