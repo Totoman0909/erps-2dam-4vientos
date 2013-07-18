@@ -6,15 +6,12 @@ import java.util.List;
  * Main class
  * @author Pello Xabier Altadill Izura
  * @greetz 4 u
- * @listening "Mouth for war - Pantera"
- *  Revenge 
- *  I'm screaming revenge again 
- *  Wrong 
- *  I've been wrong for far too long 
- *  Been constantly so frustrated 
- *  I've moved mountains with less 
- *  When I channel my hate to productive 
-I*  don't find it hard to impress
+ * @listening "Seasons in the Abyss - Slayer"
+ * Close your eyes 
+ * Look deep in your soul 
+ * Step outside yourself 
+ * And let your mind go 
+ * Frozen eyes stare deep in your mind as you die 
  */
 public class Main  {
 	
@@ -55,6 +52,27 @@ public class Main  {
         System.out.println("Total cars: " + cars.size());	
 	}
 	
+	
+	/**
+	 * simple function for reusing
+	 * @param productDAOInterface
+	 */
+	public static void showAllProducts (ProductDAOInterface productDAOInterface) {
+		// SELECT ALL DATA
+    	List<Product> products = productDAOInterface.selectAll();
+    	String productDesc = "";
+        
+    	System.out.println("\n--- Products ----- table contents -----------");
+        
+        for(Product product : products) {
+        	productDesc = "Id: " + product.getId() + 
+        					" - Name: " + product.getName() +
+        					" - Type: " + product.getProductType().getName();
+        	System.out.println(productDesc);
+        }
+
+        System.out.println("Total products: " + products.size());	
+	}
     public static void main( String[] args )
     {
     	/*
@@ -86,7 +104,7 @@ public class Main  {
         System.out.println("Show data after deletion");
     	showAll(customerDAO);
         */
-    	
+    	/*
     	CarDAOInterface carDAO = new CarDAO();
     	
     	showAllCars(carDAO);
@@ -117,5 +135,41 @@ public class Main  {
         
         // DELETE DATA
         carDAO.delete(newCar);
+        */
+
+    	ProductDAOInterface productDAO = new ProductDAO();
+    	ProductTypeDAOInterface productTypeDAO = new ProductTypeDAO();
+    	
+    	showAllProducts(productDAO);
+    	
+    	
+        // SELECT JUST ONE
+        Product oneProduct = productDAO.selectById(1);
+    	System.out.println("Selected Name: " + oneProduct.getName());
+    	
+    	
+        // INSERT NEW DATA
+    	ProductType productType = new ProductType("Luxurious");
+    	productTypeDAO.insert(productType);
+    	Product newProduct = new Product("Angulas","Angulas de Aginaga", productType);
+    	
+    	productDAO.insert(newProduct);
+    	
+    	System.out.println("Inserted id: " + newProduct.getId());
+    	
+        System.out.println("Show data after new insert");
+    	showAllProducts(productDAO);
+        
+        // UPDATE DATA
+        newProduct.setName("Piperrark");
+        productDAO.update(newProduct);
+
+        System.out.println("Show data after update");
+    	showAllProducts(productDAO);
+        
+        // DELETE DATA
+        productDAO.delete(newProduct);
+    	showAllProducts(productDAO);
+
     }
 }
