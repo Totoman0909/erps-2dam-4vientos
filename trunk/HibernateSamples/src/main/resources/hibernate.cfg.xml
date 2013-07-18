@@ -39,6 +39,8 @@
         <mapping resource="Customer.hbm.xml"/>
         <mapping resource="Car.hbm.xml"/>
         <mapping resource="Insurance.hbm.xml"/>
+        <mapping resource="Product.hbm.xml"/>
+        <mapping resource="ProductType.hbm.xml"/>
          
 
     </session-factory>
