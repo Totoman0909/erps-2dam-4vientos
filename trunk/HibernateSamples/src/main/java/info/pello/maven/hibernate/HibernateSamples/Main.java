@@ -1,5 +1,6 @@
 package info.pello.maven.hibernate.HibernateSamples;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,6 +74,31 @@ public class Main  {
 
         System.out.println("Total products: " + products.size());	
 	}
+
+	/**
+	 * simple function for reusing
+	 * @param productDAOInterface
+	 */
+	public static void showAllProductTypes (ProductTypeDAOInterface productTypeDAO) {
+		// SELECT ALL DATA
+    	List<ProductType> productTypes = productTypeDAO.selectAll();
+    	String productDesc = "";
+        
+    	System.out.println("\n--- ProductsTypes ----- table contents -----------");
+        
+        for(ProductType productType : productTypes) {
+        	productDesc = "Id: " + productType.getId() + 
+        					" - Name: " + productType.getName() +
+        					" - Products: \n";
+        	productDesc += productType.getProducts().toString() + "\n";
+        	
+        	System.out.println(productDesc);
+        }
+
+        System.out.println("Total products: " + productTypes.size());	
+	}
+
+	
     public static void main( String[] args )
     {
     	/*
@@ -170,6 +196,8 @@ public class Main  {
         // DELETE DATA
         productDAO.delete(newProduct);
     	showAllProducts(productDAO);
+    	
+    	showAllProductTypes(productTypeDAO);
 
     }
 }

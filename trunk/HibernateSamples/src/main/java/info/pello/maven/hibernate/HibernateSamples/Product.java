@@ -86,6 +86,15 @@ public class Product {
 	 */
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description="
+				+ description + "]";
 	} 
 	
 	
