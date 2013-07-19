@@ -39,6 +39,8 @@
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Customer" />
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Car" />
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Insurance" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Product" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.ProductType" />
          
 
     </session-factory>

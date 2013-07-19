@@ -6,7 +6,6 @@ package info.pello.maven.hibernate.HibernateAnnotationsSamples;
 // We need all of these for annotations
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.PrimaryKeyJoinColumn;
