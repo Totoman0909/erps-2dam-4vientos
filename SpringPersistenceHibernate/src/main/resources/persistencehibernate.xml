@@ -52,8 +52,8 @@ to create that file now.
 	<property name="sessionFactory" ref="sessionFactory" />
 </bean>
 
-<!-- We create the journalist -->
-<!--  bean id="logger" class="info.pello.spring.persistence.hibernate.Logger" / -->
+<!-- We create the logger aspect -->
+<bean id="logger" class="info.pello.spring.persistence.hibernate.Logger" />
 <!-- 
 We add AOP 
 Don't forget to include in header:
@@ -61,13 +61,16 @@ Don't forget to include in header:
 						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 -->
 
-<!--  aop:config>
+<!-- aop:config>
 	<aop:aspect ref="logger">
-		<aop:pointcut id="running"
-			expression="execution(* *.run(..))" /> 
-		<aop:after pointcut-ref="running"
-			method="reportRunning"/>
+		<aop:pointcut id="inserting"
+			expression="execution(* info.pello.spring.persistence.hibernate.create(info.pello.spring.persistence.hibernate.Customer)) and args(customer)" /> 
+		<aop:after pointcut-ref="inserting"
+			method="reportInsert" 
+			arg-names="customer" />
 	</aop:aspect>
 </aop:config -->
+
+
 
 </beans>
