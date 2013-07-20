@@ -41,6 +41,8 @@
         <mapping resource="Insurance.hbm.xml"/>
         <mapping resource="Product.hbm.xml"/>
         <mapping resource="ProductType.hbm.xml"/>
+        <mapping resource="User.hbm.xml"/>
+        <mapping resource="Role.hbm.xml"/>
          
 
     </session-factory>
