@@ -10,17 +10,17 @@ import java.util.List;
 
 
 /**
- * DAO for assignment entity using Hibernate
+ * DAO for user entity using Hibernate
  * @author Pello Xabier Altadill Izura
  * @greetz Blue Mug
  *
  */
 @Repository  
-public class AssignmentDAO {
+public class UserDAO {
 
 	private SessionFactory sessionFactory;
 
-	public AssignmentDAO () { System.out.println("Bean created");}
+	public UserDAO () { System.out.println("Bean created");}
 
 
 	/**
@@ -33,44 +33,44 @@ public class AssignmentDAO {
 	}
 	
 	/**
-	 * gets Assignment data from DataBase
-	 * @param assignmentId
+	 * gets User data from DataBase
+	 * @param userId
 	 * @return
 	 */
 	@Transactional(readOnly = true)
-	public Assignment getAssignmentsById (long assignmentId) {
-	    Assignment assignment = (Assignment) getSession().get(Assignment.class, assignmentId);
-	    return assignment;
+	public User getUsersById (long userId) {
+	    User user = (User) getSession().get(User.class, userId);
+	    return user;
 	} 
 
 	/**
-	 * gets all Assignment data from DataBase
-	 * @return list of assignments
+	 * gets all User data from DataBase
+	 * @return list of users
 	 */
 	@Transactional(readOnly = true)
-	public List<Assignment> getAssignments () {
-		List<Assignment> assignments = null;
+	public List<User> getUsers () {
+		List<User> users = null;
 		try {
-			assignments = getSession().createQuery("from Assignment").list();
+			users = getSession().createQuery("from User").list();
 		} catch (Exception e) {
 			System.err.println("Error e: " + e.getMessage() + ":");
 			e.printStackTrace(System.out);
 		}
-	    return assignments;
+	    return users;
 	} 
 	
 	/**
-	 * creates new Assignment
-	 * @param newAssignment
+	 * creates new User
+	 * @param newUser
 	 * @return
 	 */
 	@Transactional
-	public long create (Assignment newAssignment) {
+	public long create (User newUser) {
 
 		//getSession().beginTransaction();
 		 
-	    Integer id = (Integer) getSession().save(newAssignment);
-	    newAssignment.setId(id);
+	    Integer id = (Integer) getSession().save(newUser);
+	    newUser.setId(id);
 	         
 	    //getSession().getTransaction().commit();
 	         
@@ -78,29 +78,29 @@ public class AssignmentDAO {
 	}
 	
 	/**
-	 * updates assignment information 
-	 * @param assignment
+	 * updates user information 
+	 * @param user
 	 * @return affected rows
 	 */
 	@Transactional
-	public int update (Assignment assignment) {
+	public int update (User user) {
 		
-		getSession().merge(assignment);
+		getSession().merge(user);
 		return 0;
 	}
 	
 	/**
-	 * delete assignment  
-	 * @param assignmentId
+	 * delete user  
+	 * @param userId
 	 * @return affected rows
 	 */
 	@Transactional
-	public int delete (Long assignmentId) {;
+	public int delete (Long userId) {;
 	    
 		// It's easier to delete using the object.. but
 		// just to see how we should delete by id:
-	 	Assignment assignmentToDelete = (Assignment) sessionFactory.getCurrentSession().load(Assignment.class,assignmentId);
-	 	getSession().delete(assignmentToDelete);
+	 	User userToDelete = (User) sessionFactory.getCurrentSession().load(User.class,userId);
+	 	getSession().delete(userToDelete);
 		return 0;
 	}
 

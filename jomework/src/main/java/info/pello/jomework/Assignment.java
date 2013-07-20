@@ -3,7 +3,9 @@
  */
 package info.pello.jomework;
 
-import java.util.Date;
+import java.sql.Date;
+
+
 
 /**
  * Represents assignment entity
@@ -79,6 +81,7 @@ public class Assignment {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	/**
 	 * @return the initDate
