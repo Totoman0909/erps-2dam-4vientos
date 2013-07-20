@@ -37,6 +37,7 @@ to create that file now.
 	<property name="mappingResources">
 		<list>
 			<value>spring/Assignment.hbm.xml</value>
+			<value>spring/User.hbm.xml</value>
 		</list>		
 	</property>
 	<property name="hibernateProperties">
@@ -52,6 +53,10 @@ to create that file now.
 </bean>
 
 <bean id="assignmentDAO" class="info.pello.jomework.AssignmentDAO" >
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+<bean id="userDAO" class="info.pello.jomework.UserDAO" >
 	<property name="sessionFactory" ref="sessionFactory" />
 </bean>
 

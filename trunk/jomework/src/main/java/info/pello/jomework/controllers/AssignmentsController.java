@@ -22,10 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AssignmentsController {
 	private AssignmentDAO assignmentDAO;
 	
+	/**
+	 * constructor with autowired parameter
+	 * Spring will inject this
+	 * @param assignmentDAO
+	 */
 	@Autowired
 	public AssignmentsController (AssignmentDAO assignmentDAO) {
 		this.assignmentDAO = assignmentDAO;
 	}
+	
 	/**
 	 * handles default / or /hello request
 	 * @param model
