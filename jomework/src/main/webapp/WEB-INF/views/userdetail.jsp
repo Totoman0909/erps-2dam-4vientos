@@ -6,11 +6,11 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Jomework :: Users</title>
+		<title>Jomework :: User detail</title>
 	</head> 
 	<body>
-		<header>Users</header>
-		<article><h2>${greet}</h2></article>
+		<header>User detail</header>
+		<article><h2>User details: ${user.login}</h2></article>
 		<nav>
 			<ul>
 				<li>
@@ -24,15 +24,11 @@
 				</li>
 			</ul>
 		</nav>
-
-		<ul>		
-		<c:forEach items="${users}"  var="user" >
-				<li>
-					<b>${user.login}</b> ${user.description}
-					<a href="<s:url value="/users/detail?iduser=${user.id}" />" title="Detailed info"> see detail</a>
-				</li>
-		</c:forEach>
-		</ul>
+			<ul>
+				<li><b>Login</b>${user.login}</li> 
+				<li><b>Password:</b>${user.password}</li>
+				<li><b>Description</b>${user.description}</li>
+			</ul>
 	</body>
 </html>
 

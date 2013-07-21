@@ -10,7 +10,7 @@ package info.pello.jomework;
  * @greet to teachers who are users too
  */
 public class User {
-	private int id;
+	private Long id;
 	private String login;
 	private String password;
 	private String description;
@@ -29,7 +29,7 @@ public class User {
 	 * @param password
 	 * @param description
 	 */
-	public User(int id, String login, String password, String description) {
+	public User(Long id, String login, String password, String description) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -42,7 +42,7 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", login=" + login + ", password=" + password
+		return "User> [id=" + id + ", login=" + login + ", password=" + password
 				+ ", description=" + description + "]";
 	}
 
@@ -50,14 +50,14 @@ public class User {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

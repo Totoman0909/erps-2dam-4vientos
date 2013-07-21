@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- No pueden convivir c & sgf? da error y no arranca -->
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 <!DOCTYPE html>
 <html>
@@ -24,15 +24,19 @@
 				</li>
 			</ul>
 		</nav>
+		
+		<sf:form method="post" modelAttribute="user">
+			<fieldset><legend>New User</legend>			
+				<label for="login">Login</label><br />
+				<sf:input path="login"  /><br />
+				<label for="password">Password</label><br />
+				<sf:input path="password" /><br />
+				<label for="description">Description</label><br />
+				<sf:textarea  path="description" /><br />
+				<sf:button />
+			</fieldset>
+		</sf:form>
 
-		<ul>		
-		<c:forEach items="${users}"  var="user" >
-				<li>
-					<b>${user.login}</b> ${user.description}
-					<a href="<s:url value="/users/detail?iduser=${user.id}" />" title="Detailed info"> see detail</a>
-				</li>
-		</c:forEach>
-		</ul>
 	</body>
 </html>
 
