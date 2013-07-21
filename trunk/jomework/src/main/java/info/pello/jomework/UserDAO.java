@@ -69,7 +69,7 @@ public class UserDAO {
 
 		//getSession().beginTransaction();
 		 
-	    Integer id = (Integer) getSession().save(newUser);
+		Long id = (Long) getSession().save(newUser);
 	    newUser.setId(id);
 	         
 	    //getSession().getTransaction().commit();

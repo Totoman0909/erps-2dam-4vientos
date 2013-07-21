@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * controller to show the users page
@@ -35,37 +36,77 @@ public class UsersController {
 	}
 	
 	/**
-	 * handles default / or /hello request
+	 * handles default /users or /users/show
+	 * optional get parameter: url?user=foo
 	 * @param model
 	 * @return the name of the view to show
 	 * RequestMapping({"/users","/users/show"})
 	 */
 	@RequestMapping(method=RequestMethod.GET,value={"/users","/users/show"})
 	public String showUsers(@RequestParam(value="user", defaultValue="", required=false) String name,Map<String, Object> model) {
-		System.err.println("En show Users, nos han pasado: " + name);
+		System.err.println("Parameter: " + name);
 		if (null == this.userDAO) {		System.out.println("Hutsa dek");}
-		//List<User> users = this.userDAO.getUsers();
-		//model.put("users", users);
+		List<User> users = this.userDAO.getUsers();
+		model.put("users", users);
 
 		// We return view name
 		return "users";
 	}
+	
+	/**
+	 * handles default /users/detail?user=id
+	 * optional get parameter: url?user=foo
+	 * @param model
+	 * @return the name of the view to show
+	 * RequestMapping({"/users/detail"})
+	 */
+	@RequestMapping(method=RequestMethod.GET,value={"/users/detail"})
+	public String userDetail(@RequestParam(value="iduser", defaultValue="", required=true) Long id,Map<String, Object> model) {
+		System.err.println("Parameter: " + id);
+		User user = this.userDAO.getUsersById(id);
+		model.put("user", user);
+
+		// We return view name
+		return "userdetail";
+	}
+	
+	/**
+	 * handles /usera/new
+	 * redirects to new user form
+	 * @param model
+	 * @return the name of the view to show
+	 * RequestMapping({"/users","/users/new"})
+	 */
+	@RequestMapping(method=RequestMethod.GET,value={"/users/new"})
+	public String newUser(Map<String, Object> model) {
+		
+		// We'll user an User entity
+		model.put("user", new User());
+		
+		// We return view name
+		return "newuser";
+	}
 
 	/**
-	 * handles default / or /hello request
+	 * handles default /userrs req
 	 * @param model
 	 * @return the name of the view to show
 	 * RequestMapping({"/users","/users/show"})
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public String createUser(Map<String, Object> model) {
-		//System.err.println("Form bidalita ." + model.get("user").toString());
-		//
-		//List<User> users = this.userDAO.getUsers();
-		//model.put("users", users);
+	public ModelAndView saveUser(User user) {
 
-		// We return view name
-		return "users";
+		System.err.println("Form received ." + user.toString());
+		// We save the user:
+		userDAO.create(user);
+		
+	    // We redirect to other handler
+		ModelAndView modelAndView = new ModelAndView("redirect:/users");                
+	    Map<String, Object> model = modelAndView.getModel();
+	    
+	    return new ModelAndView("redirect:/users", model); 
+	    
+				
 	}
 
 }

@@ -12,8 +12,8 @@
         </id>
         <property name="name" column="name" />
         <property name="description" column="description"/>
-        <property name="initDate" column="initdate" />
-        <property name="endDate" column="enddate"  />
+        <property name="initDate" column="initdate" type="date" />
+        <property name="endDate" column="enddate" type="date" />
     </class>
  
 </hibernate-mapping>
