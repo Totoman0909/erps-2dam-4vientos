@@ -28,8 +28,6 @@
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<!-- We need this bean for jsp forms ?? -->
-	<!-- bean id="user" class="info.pello.jomework.User" / -->
 	
 
 </beans>
