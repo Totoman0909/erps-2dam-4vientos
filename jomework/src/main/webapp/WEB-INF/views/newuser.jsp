@@ -29,11 +29,14 @@
 			<fieldset><legend>New User</legend>			
 				<label for="login">Login</label><br />
 				<sf:input path="login"  /><br />
+				<sf:errors path="login" cssClass="error" />
 				<label for="password">Password</label><br />
 				<sf:input path="password" /><br />
+				<sf:errors path="password" cssClass="error" />
 				<label for="description">Description</label><br />
 				<sf:textarea  path="description" /><br />
-				<sf:button />
+				<sf:errors path="description" cssClass="error" />
+				<input type="submit" name="create" value="Create" id="create" />
 			</fieldset>
 		</sf:form>
 
