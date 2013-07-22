@@ -26,7 +26,7 @@ public class ProductTypeDAO implements ProductTypeDAOInterface {
 	    Session session = sessionFactory.openSession();
 	 
 	    ProductType productType = (ProductType) session.get(ProductType.class, id);
-	    //session.close();
+
 	    return productType;
 	}
 
@@ -39,7 +39,7 @@ public class ProductTypeDAO implements ProductTypeDAOInterface {
 	    Session session = sessionFactory.openSession();
 	 
 	    List<ProductType> productTypes = session.createQuery("from ProductType").list();
-	    //session.close();
+
 	    return productTypes;
 	}
 
@@ -58,7 +58,7 @@ public class ProductTypeDAO implements ProductTypeDAOInterface {
 	         
 	    session.getTransaction().commit();
 	         
-	    //session.close();
+
 
 	}
 
@@ -76,7 +76,6 @@ public class ProductTypeDAO implements ProductTypeDAOInterface {
 		 
 		    session.getTransaction().commit();
 		 
-		   // session.close();
 	}
 
 	/*
@@ -93,7 +92,6 @@ public class ProductTypeDAO implements ProductTypeDAOInterface {
 	 
 	    session.getTransaction().commit();
 	 
-	    //session.close();
 	}
 
 }

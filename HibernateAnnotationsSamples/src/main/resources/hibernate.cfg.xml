@@ -41,6 +41,8 @@
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Insurance" />
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Product" />
         <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.ProductType" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.User" />
+        <mapping class="info.pello.maven.hibernate.HibernateAnnotationsSamples.Role" />
          
 
     </session-factory>
