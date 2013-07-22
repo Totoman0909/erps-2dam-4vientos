@@ -93,10 +93,9 @@ public class UsersController {
 	}
 
 	/**
-	 * handles default /userrs req
+   * handles form POST for new user
 	 * @param model
 	 * @return the name of the view to show
-	 * RequestMapping({"/users","/users/show"})
 	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult bindingResult) {
