@@ -7,6 +7,7 @@ package info.pello.maven.hibernate.HibernateSamples;
  */
 
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -20,6 +21,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class HibernateSession {
   
     private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static Session session;
   
     /**
      * Based on hibernate.cfg.xml configuration creates
@@ -40,5 +42,17 @@ public class HibernateSession {
      */
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    
+    /**
+     * gives the current Session
+     * @return Hibernate Session
+     */
+    public static Session getSession () {
+    	if (null == session) {
+    		session = sessionFactory.openSession();
+    	}
+    	
+    	return session;
     }
 }

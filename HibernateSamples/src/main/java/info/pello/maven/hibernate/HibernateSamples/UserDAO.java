@@ -16,17 +16,34 @@ import org.hibernate.SessionFactory;
  */
 public class UserDAO implements UserDAOInterface {
 
+    private Session session;
+    
+	public UserDAO () {
+		session = HibernateSession.getSession();
+	}
+	
+	/**
+	 * @return the session
+	 */
+	public Session getSession() {
+		return session;
+	}
+
+	/**
+	 * @param session the session to set
+	 */
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
 	/* 
 	 * selects one user by Id
 	 * @param id
 	 * @return User
 	 */
 	public User selectById(long id) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
-	 
 	    User user = (User) session.get(User.class, id);
-	    session.close();
+
 	    return user;
 	}
 
@@ -35,11 +52,8 @@ public class UserDAO implements UserDAOInterface {
 	 * @return List of users
 	 */
 	public List<User> selectAll() {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
-	 
 	    List<User> users = session.createQuery("from User").list();
-	    session.close();
+
 	    return users;
 	}
 
@@ -49,8 +63,6 @@ public class UserDAO implements UserDAOInterface {
 	 * @param new user
 	 */
 	public void insert(User user) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
 	 
 	    Long id = (Long) session.save(user);
@@ -58,7 +70,6 @@ public class UserDAO implements UserDAOInterface {
 	         
 	    session.getTransaction().commit();
 	         
-	    session.close();
 
 	}
 
@@ -67,8 +78,6 @@ public class UserDAO implements UserDAOInterface {
 	 * @param user to update
 	 */
 	public void update(User user) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-		    Session session = sessionFactory.openSession();
 		 
 		    session.beginTransaction();
 		 
@@ -76,7 +85,6 @@ public class UserDAO implements UserDAOInterface {
 		 
 		    session.getTransaction().commit();
 		 
-		    session.close();
 	}
 
 	/*
@@ -84,16 +92,13 @@ public class UserDAO implements UserDAOInterface {
 	 * @param user to delete
 	 */
 	public void delete(User user) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
 	    
 	    session.beginTransaction();
 	    
 	    session.delete(user);
 	 
 	    session.getTransaction().commit();
-	 
-	    session.close();
+
 	}
 
 }

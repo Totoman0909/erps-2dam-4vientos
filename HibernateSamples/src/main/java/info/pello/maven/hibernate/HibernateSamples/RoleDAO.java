@@ -16,17 +16,38 @@ import org.hibernate.SessionFactory;
  */
 public class RoleDAO implements RoleDAOInterface {
 
+    private Session session;
+    
+    /**
+     * default constructor, inits hibernate session
+     */
+	public RoleDAO () {
+		session = HibernateSession.getSession();
+	}
+	
+	/**
+	 * @return the session
+	 */
+	public Session getSession() {
+		return session;
+	}
+
+	/**
+	 * @param session the session to set
+	 */
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	
 	/* 
 	 * selects one role by Id
 	 * @param id
 	 * @return Role
 	 */
 	public Role selectById(long id) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
 	 
 	    Role role = (Role) session.get(Role.class, id);
-	    session.close();
+
 	    return role;
 	}
 
@@ -35,11 +56,9 @@ public class RoleDAO implements RoleDAOInterface {
 	 * @return List of roles
 	 */
 	public List<Role> selectAll() {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
-	 
+ 
 	    List<Role> roles = session.createQuery("from Role").list();
-	    session.close();
+
 	    return roles;
 	}
 
@@ -49,16 +68,13 @@ public class RoleDAO implements RoleDAOInterface {
 	 * @param new role
 	 */
 	public void insert(Role role) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
+
 	    session.beginTransaction();
 	 
 	    Long id = (Long) session.save(role);
 	    role.setId(id);
 	         
 	    session.getTransaction().commit();
-	         
-	    session.close();
 
 	}
 
@@ -67,8 +83,6 @@ public class RoleDAO implements RoleDAOInterface {
 	 * @param role to update
 	 */
 	public void update(Role role) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-		    Session session = sessionFactory.openSession();
 		 
 		    session.beginTransaction();
 		 
@@ -76,7 +90,6 @@ public class RoleDAO implements RoleDAOInterface {
 		 
 		    session.getTransaction().commit();
 		 
-		    session.close();
 	}
 
 	/*
@@ -84,16 +97,13 @@ public class RoleDAO implements RoleDAOInterface {
 	 * @param role to delete
 	 */
 	public void delete(Role role) {
-	    SessionFactory sessionFactory = HibernateSession.getSessionFactory();
-	    Session session = sessionFactory.openSession();
 	    
 	    session.beginTransaction();
 	    
 	    session.delete(role);
 	 
 	    session.getTransaction().commit();
-	 
-	    session.close();
+
 	}
 
 }
