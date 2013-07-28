@@ -23,7 +23,15 @@
 		<transition on="loginEntered" to="userReady" />
 	</view-state>
 	
-	<view-state id="userReady" model="newUser">
+	<!-- 
+	In this state the flow performs an action an then goes on. 
+	-->
+	<action-state id="userReady">
+		<evaluate expression="serviceDoSomething.logUser(newUser)" />
+		<transition to="finishFlow" />
+	</action-state>
+	
+	<view-state id="finishFlow" model="newUser">
 		<transition to="finished" />
 	</view-state>
 
@@ -33,6 +41,7 @@
 	
 	<end-state id="cancelled" />
 		
+	<!-- With this in any place that we press Cancel we go to cancelled state -->
 	<global-transitions>
 		<transition on="cancel" to="cancelled" />
 	</global-transitions>
