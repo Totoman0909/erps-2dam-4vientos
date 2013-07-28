@@ -66,4 +66,7 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- We'll use this bean in an action state of the flow -->
+	<bean id="serviceDoSomething" class="info.pello.signup.ServiceDoSomething" />
+	
 </beans>
