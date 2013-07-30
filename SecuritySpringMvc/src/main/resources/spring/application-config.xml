@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+PAY ATTENTION!!! If you don't want to put security: prefix in every security-related
+tag you must config as default namespace and change beans to xmlns:beans
+-->
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+  <!--
+  	If we put auto-config="true" as http attribute
+  	auto-config generates login and logout pages, remember-me feature,... for us.
+  	We also set interceptions or not based on url patterns
+  -->
+  <security:http  use-expressions="true">
+    <security:intercept-url pattern="/css/**" access="permitAll" />
+    <security:intercept-url pattern="/js/**" access="permitAll" />
+    <security:intercept-url pattern="/images/**" access="permitAll" />
+    <security:intercept-url pattern="/hello" access="permitAll" />
+
+    <security:intercept-url pattern="/protected" access="isAuthenticated()" />
+
+    <security:intercept-url pattern="/admin/**" 
+        access="isAuthenticated() and principal.username=='root'"/>
+     <!-- the same but for all the role -->
+    <security:intercept-url pattern="/admin" access="hasRole('admin')"/>
+        <!-- This is radical but recommended -->
+        <security:intercept-url pattern="/**" access="denyAll" />
+
+        <security:form-login />
+        <security:logout />
+
+	<!-- In case qe want to force https in login -->        
+    <!--security:intercept-url pattern="/login" requires-channel="https"/ -->
+
+	<!-- Another way to be more specific -->
+    <!-- security:form-login login-page="/login"
+                login-processing-url="/static/j_spring_security_check"  
+                authentication-failure-url="/login"/>
+    <security:logout logout-url="/static/j_spring_security_logout"/ -->
+
+    <security:remember-me key="seronoserkey"
+        token-validity-seconds="2419200" />    
+   </security:http>
+   
+   <!-- We set the authentication manager -->
+     <security:authentication-manager alias="authenticationManager">
+    	<security:authentication-provider user-service-ref="xmlUserService" />
+  	</security:authentication-manager>
+  	
+  	<!-- Plain user/password xml database -->
+  	<security:user-service id="xmlUserService">
+      <security:user name="root" password="toor"  authorities="normal, admin"/>
+      <security:user name="falken" password="josua"  authorities="normal"/>
+      <security:user name="snowden" password="secret" authorities="normal"/>
+    </security:user-service>    
+    <!-- In case we wanted jdbc based authentication
+    	We need a datasource and also specify queries for auth. 
+    -->
+        <!-- security:jdbc-user-service id="jdbcUserService" 
+       data-source-ref="dataSource"
+       users-by-username-query="select username, password, true from users where username=?"
+       authorities-by-username-query="select username,'admin' from users where username=?" / -->
+
+</beans>
