@@ -17,6 +17,31 @@ import java.util.List;
  */
 public class Main  {
 	
+	
+	/**
+	 * shows all departments
+	 * @param departmentDAO
+	 */
+	public static void showAllDepartments (DepartmentDAOInterface departmentDAO) {
+		// SELECT ALL DATA
+    	List<Department> departments = departmentDAO.selectAll();
+        
+    	System.out.println("\n--- DEPARTMENT: ----- table contents -----------");
+        
+        for(Department department : departments) {
+        	System.out.print("Id: " + department.getId());
+        	System.out.println(" - Name: " + department.getName());
+        	System.out.println(" - Description: " + department.getDescription());
+        	System.out.println(" - Main ID: " + department.getMainDepartmentId());
+        	
+        	for (Department subdept : department.getDepartments()) {
+        		System.out.println("Subdepartment: " + subdept.toString());
+        	}
+        }
+
+        System.out.println("Total Departments: " + departments.size());	
+	}
+	
 	/**
 	 * simple function for reusing
 	 * @param customerDAO
@@ -245,6 +270,7 @@ public class Main  {
     	
     	showAllProductTypes(productTypeDAO);
 	*/
+    	/*
     	UserDAOInterface userDAO = new UserDAO();
     	RoleDAOInterface roleDAO = new RoleDAO();
     	
@@ -283,6 +309,8 @@ public class Main  {
         userDAO.delete(newUser);
     	showAllUsers(userDAO);
     	
-    	showAllRoles(roleDAO);
+    	showAllRoles(roleDAO);*/
+    	DepartmentDAOInterface departmentDAO = new DepartmentDAO();
+    	showAllDepartments(departmentDAO);
     }
 }

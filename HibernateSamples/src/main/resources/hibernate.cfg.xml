@@ -43,6 +43,7 @@
         <mapping resource="ProductType.hbm.xml"/>
         <mapping resource="User.hbm.xml"/>
         <mapping resource="Role.hbm.xml"/>
+        <mapping resource="Department.hbm.xml"/>
          
 
     </session-factory>
