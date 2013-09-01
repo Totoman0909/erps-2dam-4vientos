@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+<!-- With this we can get some property values from
+another file an so we don't have to show any password here.
+It's worth mentioning that this property values will populate not
+only to this file but also to annotations in source code. -->
+<context:property-placeholder
+	location="emailer.properties" />
+
+<!-- Springs mail Sender implementation.
+Note the variables ${} their values come from properties file.
+In this case I'm using gmail and It's a bit tricky as you see.
+ -->
+ <bean id="mailSender" 
+      class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${host}" /><!-- For gmail: smtp.gmail.com -->
+        <property name="port" value="${port}" /><!-- Port: 587 -->
+        <property name="protocol" value="smtp" />
+    	<property name="username" value="${username}" />
+    	<property name="password" value="${password}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+            </props>
+        </property>
+  </bean>
+
+<bean id="emailer" class="info.pello.spring.mail.Emailer">
+	<property name="mailSender" ref="mailSender" />
+</bean>  
+</beans>
