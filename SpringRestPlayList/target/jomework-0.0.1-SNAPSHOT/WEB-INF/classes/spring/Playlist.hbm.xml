@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+ <!-- Mapping configuration details between Playlist class and customer table -->
+<hibernate-mapping package="info.pello.playlist">
+ 
+    <class name="Playlist" table="playlist">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="artist" column="artist" />
+        <property name="song" column="song" />
+        <property name="url" column="url"/>
+    </class>
+ 
+</hibernate-mapping>
