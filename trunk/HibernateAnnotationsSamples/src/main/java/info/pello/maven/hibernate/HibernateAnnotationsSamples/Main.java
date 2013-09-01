@@ -1,5 +1,6 @@
 package info.pello.maven.hibernate.HibernateAnnotationsSamples;
 
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +17,33 @@ import java.util.List;
  * Frozen eyes stare deep in your mind as you die 
  */
 public class Main  {
+	
+	
+	/**
+	 * shows all departments
+	 * @param departmentDAO
+	 */
+	public static void showAllDepartments (DepartmentDAOInterface departmentDAO) {
+		// SELECT ALL DATA
+    	List<Department> departments = departmentDAO.selectAll();
+        
+    	System.out.println("\n--- DEPARTMENT: ----- table contents -----------");
+        
+        for(Department department : departments) {
+        	System.out.print("Id: " + department.getId());
+        	System.out.println(" - Name: " + department.getName());
+        	System.out.println(" - Description: " + department.getDescription());
+        /*	if (null != department.getMainDepartment()) {
+            	System.out.println(" - Main Department ID: " + department.getMainDepartment().getId());        		
+        	}*/
+        	
+        	/*for (Department subdept : department.getDepartments()) {
+        		System.out.println("Subdepartment: " + subdept.toString());
+        	}*/
+        }
+
+        System.out.println("Total Departments: " + departments.size());	
+	}
 	
 	/**
 	 * simple function for reusing
@@ -246,6 +274,7 @@ public class Main  {
     	
     	showAllProductTypes(productTypeDAO);
 	*/
+    	/*
     	UserDAOInterface userDAO = new UserDAO();
     	RoleDAOInterface roleDAO = new RoleDAO();
     	
@@ -283,6 +312,9 @@ public class Main  {
         // DELETE DATA
         userDAO.delete(newUser);
     	showAllUsers(userDAO);
-
+    	
+    	showAllRoles(roleDAO);*/
+    	DepartmentDAOInterface departmentDAO = new DepartmentDAO();
+    	showAllDepartments(departmentDAO);
     }
 }
