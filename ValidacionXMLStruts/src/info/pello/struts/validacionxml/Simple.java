@@ -31,6 +31,7 @@ public class Simple extends ActionSupport {
         return SUCCESS;
     }
 	
+	
 	/**
 	 * getSaludo
 	 * @return saludo
