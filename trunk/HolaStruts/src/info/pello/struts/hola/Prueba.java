@@ -31,6 +31,7 @@ public class Prueba extends ActionSupport {
     public String execute()
     {
     	saludo = nombre + " y " + id;
+    	System.out.println("Estoy enm exevute");
         
         return SUCCESS;
     }

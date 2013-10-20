@@ -5,6 +5,6 @@
 <head><title>index</title></head>
 <body>
 este es la index
-<a href='HolaMundo' >Ir a HolaMundo</a>
+<a href='hola' >Ir a HolaMundo</a>
 </body>
 </html>
