@@ -1,0 +1,13 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="sides" >
+        <field-validator type="required" >
+        <param name="trim">true</param><!-- Hace un trim, por defecto es true -->
+            <message>
+			El campo es requerido
+            </message>
+        </field-validator>
+    </field>
+
+</validators>
