@@ -47,17 +47,18 @@ public class Main  {
     {
     	
     	CustomerDAO customerDAO = new CustomerDAO();
+        
+    	// INSERT NEW DATA
+    	Customer newCustomer = new Customer(0,"Phil Anselmo","Suicide note","phil@pantera.com");
+    	customerDAO.insert(newCustomer);
+    	System.out.println("Inserted id: " + newCustomer.getId());
+
     	showAll(customerDAO);
             
         // SELECT JUST ONE
         Customer oneCustomer = customerDAO.selectById(1);
     	System.out.println("Selected Name: " + oneCustomer.getName());
-    	
-        // INSERT NEW DATA
-    	Customer newCustomer = new Customer(0,"Phil Anselmo","Suicide note","phil@pantera.com");
-    	customerDAO.insert(newCustomer);
-    	System.out.println("Inserted id: " + newCustomer.getId());
-    	
+    	    	
         System.out.println("Show data after new insert");
     	showAll(customerDAO);
         
