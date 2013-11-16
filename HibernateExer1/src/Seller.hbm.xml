@@ -12,6 +12,7 @@
         </id>
         <property name="name" column="name" />
         <property name="percentage" column="percentage"/>
+
     </class>
  
 </hibernate-mapping>
