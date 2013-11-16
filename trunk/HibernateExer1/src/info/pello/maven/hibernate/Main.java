@@ -17,20 +17,21 @@ public class Main  {
 	
 	/**
 	 * simple function for reusing
-	 * @param selletDAO
+	 * @param sellerDAO
 	 */
-	public static void showAll (SellerDAO selletDAO) {
+	public static void showAll (SellerDAO sellerDAO) {
 		// SELECT ALL DATA
-    	List<Seller> sellets = selletDAO.selectAll();
+    	List<Seller> sellers = sellerDAO.selectAll();
         
-    	System.out.println("\n--- sellet ----- table contents -----------");
+    	System.out.println("\n--- seller ----- table contents -----------");
         
-        for(Seller sellet : sellets) {
-        	System.out.print("Id: " + sellet.getId());
-        	System.out.println(" - Name: " + sellet.getName());
+        for(Seller seller : sellers) {
+        	System.out.print("Id: " + seller.getId());
+        	System.out.print(" - Name: " + seller.getName());
+        	System.out.println(" - Percentage: " + seller.getPercentage());
         }
 
-        System.out.println("Total sellers: " + sellets.size());	
+        System.out.println("Total sellers: " + sellers.size());	
 	}
 	
 
