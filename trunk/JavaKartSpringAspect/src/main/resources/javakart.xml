@@ -10,9 +10,7 @@
 
 
 <!--  
-        We declare 6 beans for the bulls
-        Their properties will be set with setter functions.
-        To use de p: prefix we must include xmlns:p="http://www.springframework.org/schema/p"  
+	4 Karts for the Race
 -->
 <!-- Now using SpEL sintax we set random values to properties -->
 <bean id="kart1" class="info.pello.javakart.Kart"
@@ -24,18 +22,14 @@
 <bean id="kart4" class="info.pello.javakart.Kart"
         p:name="SringKart_4" p:speed="8" p:acceleration="5" p:grip="5"  />
 
-<!-- bean id="bull5" class="info.pello.runningbulls.Bull"
-        p:name="SpringBull_5" p:weight="#{new java.util.Random().nextInt(500) + 200}" p:speed="#{new java.util.Random().nextInt(6) + 1}" />
-<bean id="bull6" class="info.pello.runningbulls.Bull"
-        p:name="SpringBull_6" p:weight="#{new java.util.Random().nextInt(500) + 200}" p:speed="#{new java.util.Random().nextInt(6) + 1}" /-->
-
-<!-- We create HumanCrowd bean setting values through constructor -->
+<!-- The circuit -->
 <bean id="circuit" class="info.pello.javakart.Circuit">
         <constructor-arg name="name" value="Los Arcos" />
         <constructor-arg name="distance" value="#{new java.util.Random().nextInt(100) + 100}" />
 </bean>
 
         
+<!-- The race  -->
 <bean id="race" class="info.pello.javakart.Race">
         <!-- We inject the bulls using setBulls() -->
         <property name="name" value="GP Spring" />
@@ -51,27 +45,12 @@
 
 </bean>
 
-<!-- We create the journalist -->
-<!-- bean id="journalist" class="info.pello.runningbulls.Journalist" / -->
-<!-- 
-We add AOP 
-Don't forget to include in header:
-                                                http://www.springframework.org/schema/aop
-                                                http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
--->
-<!-- XML Config -->
-<!-- aop:config>
-        <aop:aspect ref="journalist">
-                <aop:pointcut id="running"
-                        expression="execution(* *.run(..))" /> 
-                <aop:after pointcut-ref="running"
-                        method="reportRunning"/>
-        </aop:aspect>
-</aop:config-->
 <bean id="monitoringKart" class="info.pello.javakart.MonitoringKart"/>
+<bean id="monitoringCircuit" class="info.pello.javakart.MonitoringCircuit"/>
 
 <aop:aspectj-autoproxy>
   <aop:include name="monitoringKart"/>
+  <aop:include name="monitoringCircuit"/>
 </aop:aspectj-autoproxy>
 
 </beans>

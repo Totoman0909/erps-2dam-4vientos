@@ -3,7 +3,7 @@ package info.pello.javakart;
 import java.util.Random;
 
 /**
- * 
+ * Represents a circuit
  * @author Pello Altadill
  * @greetz for the blue mug
  *
@@ -12,6 +12,11 @@ public class Circuit {
 	
 	private String name;
 	private int distance;
+	
+	/**
+	 * default constructor
+	 */
+	public Circuit () {}
 	
 	/**
 	 * @param name
@@ -31,7 +36,7 @@ public class Circuit {
 		 
 		 // just in 33% of the cases
 		 if (random.nextInt(3) == 0) {
-			 return random.nextInt(4);
+			 return random.nextInt(5);
 		 } else {
 			 return 0;			 
 		 }

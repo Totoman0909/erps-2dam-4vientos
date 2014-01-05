@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * Inits JavaKart race
  * @author Pello Altadill
  * @greetz for the blue mug
  */
