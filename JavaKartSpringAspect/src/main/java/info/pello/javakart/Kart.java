@@ -3,10 +3,6 @@ package info.pello.javakart;
 import java.util.Random;
 
 /**
- * 
- */
-
-/**
  * @author Pello Altadill
  * @greetz for the blue mug
  */
