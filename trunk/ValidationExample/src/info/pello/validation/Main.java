@@ -3,19 +3,19 @@
  */
 package info.pello.validation;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
-import javax.validation.*;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import org.hibernate.validator.*;
+
 
 /**
  * Simple app to test java Bean validation 
  * @author Pello Altadill
- * @greetz any
+ * @greetz to any
  */
 public class Main {
 
@@ -24,10 +24,9 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// We create validator instance
-		//ValidatorConfiguration config;// = Validation.byProvider( HibernateValidator.class ).configure();
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();
-		Customer customer = new Customer();
+		Customer customer = new Customer(1,"pepe","juan",new Date());
 		Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
 
 		System.out.println("Customer created: " + customer.toString());
