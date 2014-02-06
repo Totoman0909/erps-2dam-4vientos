@@ -10,6 +10,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+// Check for hibernate annotations
+import org.hibernate.validator.constraints.*;
 
 /**
  * Represents a Customer, with annotations for validation
