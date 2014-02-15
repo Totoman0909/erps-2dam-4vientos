@@ -4,51 +4,64 @@
 package info.pello.eugene.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Digits;
 
 /**
- * @author luser
+ * Represents an assignment for a user
+ * @author Pelo Altadill
  *
  */
 public class UserAssignment {
 	
+	@Min(value=1,message="{userAsignment.id.min}")
+	@Digits(integer=10,message="{userAsignment.id.error}", fraction = 0)
 	private int id;
 	
-	@Size(min=2,max=100,message="{shipment.description.error}")
-	private String description;
+	@Min(value=1,message="{userAsignment.idUser.min}")
+	@Digits(integer=10,message="{userAsignment.idUSer.error}", fraction = 0)
+	private int idUser;
 	
-	@Past(message="{shipment.shipmentDate.error}")
-	private java.sql.Date shipmentDate;
+	@Min(value=1,message="{userAsignment.idAssignment.min}")
+	@Digits(integer=10,message="{userAsignment.idAssignment.error}", fraction = 0)
+	private int idAssignment;
 	
-	@Size(min=2,max=100,message="{shipment.origin.error}")
-	private String origin;
+	@Past(message="{userAsignment.shipmentDate.error}")
+	private java.sql.Timestamp since;
 	
-	@Size(min=2,max=100,message="{shipment.destiny.error}")
-	private String destiny;
+	@Size(min=2,message="{userAsignment.file.error}")
+	private String file;
+
+	@Min(value=0,message="{userAsignment.attempts.min}")
+	@Digits(integer=10,message="{userAsignment.attempts.error}", fraction = 0)
+	private int attempts;
 	
 	public UserAssignment () {
 		
 	}
 
-	
 	/**
 	 * @param id
-	 * @param description
-	 * @param shipmentDate
-	 * @param origin
-	 * @param destiny
+	 * @param idUser
+	 * @param idAssignment
+	 * @param since
+	 * @param file
+	 * @param attempts
 	 */
-	public UserAssignment(int id, String description, Date shipmentDate,
-			String origin, String destiny) {
+	public UserAssignment(int id, int idUser, int idAssignment,
+			Timestamp since, String file, int attempts) {
+		super();
 		this.id = id;
-		this.description = description;
-		this.shipmentDate = shipmentDate;
-		this.origin = origin;
-		this.destiny = destiny;
+		this.idUser = idUser;
+		this.idAssignment = idAssignment;
+		this.since = since;
+		this.file = file;
+		this.attempts = attempts;
 	}
-
 
 	/**
 	 * @return the id
@@ -65,72 +78,85 @@ public class UserAssignment {
 	}
 
 	/**
-	 * @return the description
+	 * @return the idUser
 	 */
-	public String getDescription() {
-		return description;
+	public int getIdUser() {
+		return idUser;
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param idUser the idUser to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 
 	/**
-	 * @return the shipmentDate
+	 * @return the idAssignment
 	 */
-	public java.sql.Date getShipmentDate() {
-		return shipmentDate;
+	public int getIdAssignment() {
+		return idAssignment;
 	}
 
 	/**
-	 * @param shipmentDate the shipmentDate to set
+	 * @param idAssignment the idAssignment to set
 	 */
-	public void setShipmentDate(java.sql.Date shipmentDate) {
-		this.shipmentDate = shipmentDate;
+	public void setIdAssignment(int idAssignment) {
+		this.idAssignment = idAssignment;
 	}
 
 	/**
-	 * @return the origin
+	 * @return the since
 	 */
-	public String getOrigin() {
-		return origin;
+	public java.sql.Timestamp getSince() {
+		return since;
 	}
 
 	/**
-	 * @param origin the origin to set
+	 * @param since the since to set
 	 */
-	public void setOrigin(String origin) {
-		this.origin = origin;
+	public void setSince(java.sql.Timestamp since) {
+		this.since = since;
 	}
 
 	/**
-	 * @return the destiny
+	 * @return the file
 	 */
-	public String getDestiny() {
-		return destiny;
+	public String getFile() {
+		return file;
 	}
 
 	/**
-	 * @param destiny the destiny to set
+	 * @param file the file to set
 	 */
-	public void setDestiny(String destiny) {
-		this.destiny = destiny;
+	public void setFile(String file) {
+		this.file = file;
 	}
 
+	/**
+	 * @return the attempts
+	 */
+	public int getAttempts() {
+		return attempts;
+	}
+
+	/**
+	 * @param attempts the attempts to set
+	 */
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Shipment [id=" + id + ", description=" + description
-				+ ", shipmentDate=" + shipmentDate + ", origin=" + origin
-				+ ", destiny=" + destiny + "]";
+		return "UserAssignment [id=" + id + ", idUser=" + idUser
+				+ ", idAssignment=" + idAssignment + ", since=" + since
+				+ ", file=" + file + ", attempts=" + attempts + "]";
 	}
-	
-	
+
+
 
 }
