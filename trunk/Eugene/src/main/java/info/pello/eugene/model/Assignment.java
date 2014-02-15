@@ -4,51 +4,82 @@
 package info.pello.eugene.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 /**
- * @author luser
+ * Represents an assignment
+ * @author Pello Altadill
  *
  */
 public class Assignment {
 	
+	@Min(value=1,message="{assignment.id.min}")
+	@Digits(integer=10,message="{assignment.id.error}", fraction = 0)
 	private int id;
-	
-	@Size(min=2,max=100,message="{shipment.description.error}")
+
+	@Size(min=2,message="{assignment.name.error}")
+	private String name;
+
+	@Size(min=2,message="{assignment.description.error}")
 	private String description;
+
+	@Past(message="{assignment.since.error}")
+	private java.sql.Timestamp since;
+
+	@Past(message="{assignment.deadline.error}")
+	private java.sql.Timestamp deadline;
+
+	@Size(min=2,message="{assignment.file.error}")
+	private String file;
 	
-	@Past(message="{shipment.shipmentDate.error}")
-	private java.sql.Date shipmentDate;
+	@Min(value=1,message="{assignment.idUser.min}")
+	@Digits(integer=10,message="{assignment.idUSer.error}", fraction = 0)
+	private int idUser;
 	
-	@Size(min=2,max=100,message="{shipment.origin.error}")
-	private String origin;
+	@Min(value=1,message="{assignment.idGroup.min}")
+	@Digits(integer=10,message="{assignment.idGroup.error}", fraction = 0)
+	private int idGroup;
 	
-	@Size(min=2,max=100,message="{shipment.destiny.error}")
-	private String destiny;
+
+
+	@Min(value=0,message="{assignment.attempts.min}")
+	@Digits(integer=10,message="{assignment.attempts.error}", fraction = 0)
+	private int attempts;
 	
 	public Assignment () {
 		
 	}
 
-	
 	/**
 	 * @param id
+	 * @param name
 	 * @param description
-	 * @param shipmentDate
-	 * @param origin
-	 * @param destiny
+	 * @param since
+	 * @param deadline
+	 * @param file
+	 * @param idUser
+	 * @param idGroup
+	 * @param attempts
 	 */
-	public Assignment(int id, String description, Date shipmentDate,
-			String origin, String destiny) {
+	public Assignment(int id, String name, String description, Timestamp since,
+			Timestamp deadline, String file, int idUser, int idGroup,
+			int attempts) {
+		super();
 		this.id = id;
+		this.name = name;
 		this.description = description;
-		this.shipmentDate = shipmentDate;
-		this.origin = origin;
-		this.destiny = destiny;
+		this.since = since;
+		this.deadline = deadline;
+		this.file = file;
+		this.idUser = idUser;
+		this.idGroup = idGroup;
+		this.attempts = attempts;
 	}
-
 
 	/**
 	 * @return the id
@@ -62,6 +93,20 @@ public class Assignment {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -79,57 +124,100 @@ public class Assignment {
 	}
 
 	/**
-	 * @return the shipmentDate
+	 * @return the since
 	 */
-	public java.sql.Date getShipmentDate() {
-		return shipmentDate;
+	public java.sql.Timestamp getSince() {
+		return since;
 	}
 
 	/**
-	 * @param shipmentDate the shipmentDate to set
+	 * @param since the since to set
 	 */
-	public void setShipmentDate(java.sql.Date shipmentDate) {
-		this.shipmentDate = shipmentDate;
+	public void setSince(java.sql.Timestamp since) {
+		this.since = since;
 	}
 
 	/**
-	 * @return the origin
+	 * @return the deadline
 	 */
-	public String getOrigin() {
-		return origin;
+	public java.sql.Timestamp getDeadline() {
+		return deadline;
 	}
 
 	/**
-	 * @param origin the origin to set
+	 * @param deadline the deadline to set
 	 */
-	public void setOrigin(String origin) {
-		this.origin = origin;
+	public void setDeadline(java.sql.Timestamp deadline) {
+		this.deadline = deadline;
 	}
 
 	/**
-	 * @return the destiny
+	 * @return the file
 	 */
-	public String getDestiny() {
-		return destiny;
+	public String getFile() {
+		return file;
 	}
 
 	/**
-	 * @param destiny the destiny to set
+	 * @param file the file to set
 	 */
-	public void setDestiny(String destiny) {
-		this.destiny = destiny;
+	public void setFile(String file) {
+		this.file = file;
 	}
 
+	/**
+	 * @return the idUser
+	 */
+	public int getIdUser() {
+		return idUser;
+	}
+
+	/**
+	 * @param idUser the idUser to set
+	 */
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	/**
+	 * @return the idGroup
+	 */
+	public int getIdGroup() {
+		return idGroup;
+	}
+
+	/**
+	 * @param idGroup the idGroup to set
+	 */
+	public void setIdGroup(int idGroup) {
+		this.idGroup = idGroup;
+	}
+
+	/**
+	 * @return the attempts
+	 */
+	public int getAttempts() {
+		return attempts;
+	}
+
+	/**
+	 * @param attempts the attempts to set
+	 */
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Shipment [id=" + id + ", description=" + description
-				+ ", shipmentDate=" + shipmentDate + ", origin=" + origin
-				+ ", destiny=" + destiny + "]";
+		return "Assignment [id=" + id + ", name=" + name + ", description="
+				+ description + ", since=" + since + ", deadline=" + deadline
+				+ ", file=" + file + ", idUser=" + idUser + ", idGroup="
+				+ idGroup + ", attempts=" + attempts + "]";
 	}
+
 	
 	
 

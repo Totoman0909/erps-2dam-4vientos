@@ -53,12 +53,12 @@ public class AssignmentController {
         
         
         /**
-         * handles default /Assignment or /Assignment/list request
+         * handles default /assignment or /assignment/list request
          * @param model
          * @return the name of the view to show
-         *  @RequestMapping({"/Assignment","/Assignment/list"})
+         *  @RequestMapping({"/assignment","/assignment/list"})
          */
-        @RequestMapping({"/Assignment","/Assignment/list"})
+        @RequestMapping({"/assignment","/assignment/list"})
         public ModelAndView AssignmentDefault() {
         	logger.info("default");
  
@@ -70,12 +70,12 @@ public class AssignmentController {
         }
 
         /**
-         * handles /Assignment/search request, redirected to default page
+         * handles /assignment/search request, redirected to default page
          * @param model
          * @return the name of the view to show
-         *  @RequestMapping({"/Assignment/search"})
+         *  @RequestMapping({"/assignment/search"})
          */
-        @RequestMapping(method=RequestMethod.POST,value={"/Assignment/search"})
+        @RequestMapping(method=RequestMethod.POST,value={"/assignment/search"})
         public ModelAndView search(@RequestParam(value="description", defaultValue="", required=true) String description) {
         	logger.info("search");
  
@@ -91,14 +91,14 @@ public class AssignmentController {
          * handles delete Assignment, and redirect to Assignment default
          * @param model
          * @return the name of the view to show
-         *  @RequestMapping({"/Assignment","/Assignment/list"})
+         *  @RequestMapping({"/assignment","/assignment/list"})
          */
-        @RequestMapping(method=RequestMethod.GET,value={"/Assignment/delete"})
+        @RequestMapping(method=RequestMethod.GET,value={"/assignment/delete"})
         public String deleteAssignment(@RequestParam(value="id", defaultValue="", required=true) int id) {
         	logger.info("delete " + id);
 
             AssignmentBO.deleteById(id);
-            return "redirect:/Assignment";
+            return "redirect:/assignment";
 
         }
         
@@ -107,9 +107,9 @@ public class AssignmentController {
          * Spring expects a model called by default 'command' or any name
          * we set to it: in this case "Assignment"
          * @return the name of the view to show
-         * @RequestMapping({"/Assignment/new"})
+         * @RequestMapping({"/assignment/new"})
          */
-        @RequestMapping(method=RequestMethod.GET,value={"/Assignment/new"})
+        @RequestMapping(method=RequestMethod.GET,value={"/assignment/new"})
         public ModelAndView newAssignment() {
         		logger.info("new Assignment ");
                 Assignment Assignment = new Assignment();
@@ -122,9 +122,9 @@ public class AssignmentController {
          * Spring expects a model called by default 'command' or any name
          * we set to it.
          * @return the name of the view to show
-         * @RequestMapping({"/Assignment/new"})
+         * @RequestMapping({"/assignment/new"})
          */
-        @RequestMapping(method=RequestMethod.POST,value={"/Assignment/save"})
+        @RequestMapping(method=RequestMethod.POST,value={"/assignment/save"})
         public String newAssignment(@Valid Assignment Assignment, BindingResult bindingResult) {
         		logger.info("new Assignment " + Assignment.toString());
         		
@@ -137,16 +137,16 @@ public class AssignmentController {
         		
         		// If data is ok, insert and go on
                 AssignmentBO.insert(Assignment);
-                return "redirect:/Assignment";
+                return "redirect:/assignment";
         }
         
         /**
          * handles delete Assignment, and redirect to Assignment default
          * @param model
          * @return the name of the view to show
-         *  @RequestMapping({"/Assignment","/Assignment/list"})
+         *  @RequestMapping({"/assignment","/assignment/list"})
          */
-        @RequestMapping(method=RequestMethod.GET,value={"/Assignment/detail"})
+        @RequestMapping(method=RequestMethod.GET,value={"/assignment/detail"})
         public ModelAndView AssignmentDetail(@RequestParam(value="id", defaultValue="", required=true) int id) {
         	logger.info("Detail " + id);
             Map<String,Object> model = new HashMap<String,Object>();
@@ -161,9 +161,9 @@ public class AssignmentController {
          * handles Assignment update, first part: register loaded
          * @param model
          * @return the name of the view to show
-         *  @RequestMapping({"/Assignment/update"})
+         *  @RequestMapping({"/assignment/update"})
          */
-        @RequestMapping(method=RequestMethod.GET,value={"/Assignment/update"})
+        @RequestMapping(method=RequestMethod.GET,value={"/assignment/update"})
         public ModelAndView update(@RequestParam(value="id", defaultValue="", required=true) int id) {
         	logger.info("update " + id);
                 Map<String,Object> model = new HashMap<String,Object>();
@@ -178,9 +178,9 @@ public class AssignmentController {
          * Spring expects a model called by default 'command' or any name
          * we set to it.
          * @return the name of the view to show
-         * @RequestMapping({"/Assignment/saveUpdate"})
+         * @RequestMapping({"/assignment/saveUpdate"})
          */
-        @RequestMapping(method=RequestMethod.POST,value={"/Assignment/saveupdate"})
+        @RequestMapping(method=RequestMethod.POST,value={"/assignment/saveupdate"})
         public String saveUpdate(@Valid Assignment Assignment, BindingResult bindingResult) {
         		logger.info("update Assignment " + Assignment.toString());
         		
@@ -192,6 +192,6 @@ public class AssignmentController {
         		}
         		
                 AssignmentBO.update(Assignment);
-                return "redirect:/Assignment";
+                return "redirect:/assignment";
         }
 }
