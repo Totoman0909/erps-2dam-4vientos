@@ -34,8 +34,8 @@ public class Assignment {
 	@Past(message="{assignment.deadline.error}")
 	private java.sql.Timestamp deadline;
 
-	@Size(min=2,message="{assignment.file.error}")
-	private String file;
+	@Size(min=2,message="{assignment.test.error}")
+	private String test;
 	
 	@Min(value=1,message="{assignment.idUser.min}")
 	@Digits(integer=10,message="{assignment.idUSer.error}", fraction = 0)
@@ -67,7 +67,7 @@ public class Assignment {
 	 * @param attempts
 	 */
 	public Assignment(int id, String name, String description, Timestamp since,
-			Timestamp deadline, String file, int idUser, int idGroup,
+			Timestamp deadline, String test, int idUser, int idGroup,
 			int attempts) {
 		super();
 		this.id = id;
@@ -75,7 +75,7 @@ public class Assignment {
 		this.description = description;
 		this.since = since;
 		this.deadline = deadline;
-		this.file = file;
+		this.test = test;
 		this.idUser = idUser;
 		this.idGroup = idGroup;
 		this.attempts = attempts;
@@ -152,17 +152,17 @@ public class Assignment {
 	}
 
 	/**
-	 * @return the file
+	 * @return the test
 	 */
-	public String getFile() {
-		return file;
+	public String getTest() {
+		return test;
 	}
 
 	/**
-	 * @param file the file to set
+	 * @param file the test to set
 	 */
-	public void setFile(String file) {
-		this.file = file;
+	public void setTest(String test) {
+		this.test = test;
 	}
 
 	/**
@@ -214,7 +214,7 @@ public class Assignment {
 	public String toString() {
 		return "Assignment [id=" + id + ", name=" + name + ", description="
 				+ description + ", since=" + since + ", deadline=" + deadline
-				+ ", file=" + file + ", idUser=" + idUser + ", idGroup="
+				+ ", test=" + test + ", idUser=" + idUser + ", idGroup="
 				+ idGroup + ", attempts=" + attempts + "]";
 	}
 
