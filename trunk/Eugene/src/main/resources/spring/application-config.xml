@@ -34,14 +34,13 @@ If you pay attention you'll realize that this bean config
 is somehow like the hibernate.cfg.xml configuration. We don't need
 to create that file now.
 -->
-<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="mappingResources">
                 <list>
-                        <value>info/pello/eugene/dao/Shipment.hbm.xml</value>
-                        <value>info/pello/eugene/dao/User.hbm.xml</value>
-                        <value>info/pello/eugene/dao/Assignment.hbm.xml</value>
-                        <value>info/pello/eugene/dao/UserAssignment.hbm.xml</value>
+                        <value>mappings/User.hbm.xml</value>
+                        <value>mappings/Assignment.hbm.xml</value>
+                        <value>mappings/UserAssignment.hbm.xml</value>
                 </list>         
         </property>
         <property name="hibernateProperties">
@@ -52,12 +51,10 @@ to create that file now.
         </property>
 </bean>
 
-<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
     <property name="sessionFactory" ref="sessionFactory" />
 </bean>
 
-<bean id="shipmentDAO" class="info.pello.eugene.dao.UserDAO" />
-<bean id="shipmentBO" class="info.pello.eugene.business.UserBO" />
 
 <bean id="userDAO" class="info.pello.eugene.dao.UserDAO" />
 <bean id="userBO" class="info.pello.eugene.business.UserBO" />
