@@ -15,6 +15,7 @@
         <property name="password" column="password" />
         <property name="email" column="email" />
         <property name="since" column="since" />
+        <property name="groupId" column="groupid" />
     </class>
  
 </hibernate-mapping>

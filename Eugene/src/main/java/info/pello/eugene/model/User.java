@@ -34,8 +34,7 @@ public class User {
 	@Past(message="{user.since.error}")
 	private java.sql.Timestamp since;
 	
-	
-	private int idGroup;
+	private int groupId;
 
 	/**
 	 * default constructor
@@ -53,7 +52,7 @@ public class User {
 	 * @param since
 	 */
 	public User(int id, String name, String login, String password,
-			String email, Timestamp since, int idGroup) {
+			String email, Timestamp since, int groupId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,7 +60,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.since = since;
-		this.idGroup = idGroup;
+		this.groupId = groupId;
 	}
 
 	/**
@@ -149,17 +148,17 @@ public class User {
 	}
 
 	/**
-	 * @return the idGroup
+	 * @return the groupId
 	 */
-	public int getIdGroup() {
-		return idGroup;
+	public int getGroupId() {
+		return groupId;
 	}
 
 	/**
-	 * @param idGroup the idGroup to set
+	 * @param groupId the groupId to set
 	 */
-	public void setIdGroup(int idGroup) {
-		this.idGroup = idGroup;
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
 	}
 
 	/* (non-Javadoc)
@@ -169,7 +168,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", login=" + login
 				+ ", password=" + password + ", email=" + email + ", since="
-				+ since + ", idGroup=" + idGroup + "]";
+				+ since + ", groupId=" + groupId + "]";
 	}
 
 

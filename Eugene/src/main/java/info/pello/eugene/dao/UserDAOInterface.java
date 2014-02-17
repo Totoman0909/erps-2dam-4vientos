@@ -18,6 +18,6 @@ public interface UserDAOInterface {
 	public void update (User User);
 	public void delete (User User);
 	public void deleteById (int id);
-	public List<User> search(String description);
+	public List<User> search(String name);
 
 }
