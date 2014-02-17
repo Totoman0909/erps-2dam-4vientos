@@ -7,6 +7,6 @@
 	</head> 
 	<body>
 		${greet}
-		<div><a href="shipment" title="Shipment management" >Shipment management</a></div>
+		<div><a href="user" title="User management" >User management</a></div>
 	</body>
 </html>

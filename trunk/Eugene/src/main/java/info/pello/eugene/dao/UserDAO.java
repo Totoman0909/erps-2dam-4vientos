@@ -123,9 +123,9 @@ public class UserDAO implements UserDAOInterface {
 	  * performs search operation
 	  */
 	 @Transactional(readOnly = true)
-	public List<User> search(String description) {
-		   Query query = getSession().createQuery("from User s where s.description like :description");
-           query.setParameter("description", "%"+description+"%");
+	public List<User> search(String name) {
+		   Query query = getSession().createQuery("from User s where s.name like :name");
+           query.setParameter("name", "%"+name+"%");
            
            List<User> users = query.list();
 		
