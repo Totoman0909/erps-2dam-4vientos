@@ -10,8 +10,8 @@ import javax.persistence.Table;
 import org.bson.types.ObjectId;
  
 /**
- * Model object 
- * @author pascal
+ * Messages object
+ * @author Pello Altadill
  */
 @Entity
 @Table(name = "messages")
