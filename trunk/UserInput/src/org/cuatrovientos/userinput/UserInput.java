@@ -22,6 +22,7 @@ public class UserInput {
 		// Convert line, which is a String to int 
 		number = Integer.parseInt(line);
 		
+		System.out.println("The number was: " + number);
 		
 
 	}
