@@ -2,9 +2,9 @@ package info.pello.spring.todo.ws;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 
@@ -112,7 +112,7 @@ public class ToDoDAO   {
 	/**
 	 * @return the sessionFactory
 	 */
-    /*
+   /* 
 	public LocalSessionFactoryBean getSessionFactory() {
 		return sessionFactory;
 	}
@@ -121,8 +121,8 @@ public class ToDoDAO   {
 
 	public void setSessionFactory(LocalSessionFactoryBean sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}*/
-
+	}
+*/
 
 
 
