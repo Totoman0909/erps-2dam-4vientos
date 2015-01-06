@@ -36,12 +36,13 @@ public class Main {
 		// TODO Auto-generated method stub
 		ApplicationContext context = new ClassPathXmlApplicationContext("todoremotews.xml");
 		
-		ToDoServiceWSEndpoint hello = (ToDoServiceWSEndpoint) context.getBean("toDoServiceWSEndpoint");
+		ToDoServiceWSEndpoint toDoService = (ToDoServiceWSEndpoint) context.getBean("toDoServiceWSEndpoint");
 
+		System.out.println("Ok, now press enter");
 		Scanner scanner = new Scanner(System.in);
 		String what = scanner.nextLine();
 		
-		/*
+		
 		List<ToDo> toDoList = toDoService.getToDoList();
 		
 		System.out.println("Here are our ToDos...");
@@ -60,7 +61,7 @@ public class Main {
 		System.out.println("After insert> Here are our ToDos...");
 		toDoList = toDoService.getToDoList();
 		System.out.println(showAll(toDoList));
-		
+		/*
 		// UPDATE DATA
 		toDo.setName("Master all");
 		toDoService.updateToDo(toDo);
